@@ -1,0 +1,33 @@
+{
+  "schema_version": "hierarchy-v1",
+  "note": "Seed 3-level disease hierarchy. Level 0=family (organ/syndrome class), 1=genus (specific disease group), 2=species (leaf dx). This is a starter set; extend via LLM-clustering script over the active registry. Species assignments may reference any genus or family id; unknown parents degrade to flat behavior.",
+  "families": [
+    {"id": "cardiovascular_syndrome", "label": "Cardiovascular syndrome", "summary": "Heart and great-vessel pathology: ACS, heart failure, arrhythmia, aortic, pericardial."},
+    {"id": "pulmonary_syndrome", "label": "Pulmonary syndrome", "summary": "Lung + airway pathology: pneumonia, PE, asthma, COPD, pneumothorax, ARDS."},
+    {"id": "neurologic_syndrome", "label": "Neurologic syndrome", "summary": "CNS/PNS pathology: stroke, seizure, meningitis, demyelination, peripheral neuropathy."},
+    {"id": "infectious_syndrome", "label": "Infectious syndrome", "summary": "Bacterial, viral, fungal, parasitic infections; sepsis spectrum."},
+    {"id": "gastrointestinal_syndrome", "label": "Gastrointestinal syndrome", "summary": "Luminal GI, hepatobiliary, pancreatic, peritoneal disease."},
+    {"id": "renal_genitourinary_syndrome", "label": "Renal / GU syndrome", "summary": "Kidney, ureter, bladder, prostate, gynecologic; AKI/CKD."},
+    {"id": "metabolic_endocrine_syndrome", "label": "Metabolic / endocrine decompensation", "summary": "DKA, HHS, thyroid storm, adrenal crisis, electrolyte emergencies."},
+    {"id": "hematologic_syndrome", "label": "Hematologic syndrome", "summary": "Anemia, coagulopathy, TMA, hemolysis, bone-marrow failure."},
+    {"id": "oncologic_syndrome", "label": "Oncologic syndrome", "summary": "Solid tumors, hematologic malignancy, paraneoplastic; tumor emergencies."},
+    {"id": "rheumatologic_syndrome", "label": "Rheumatologic / autoimmune syndrome", "summary": "SLE, RA, vasculitis, spondyloarthritis, autoimmune crises."},
+    {"id": "dermatologic_syndrome", "label": "Dermatologic syndrome", "summary": "Rash, drug eruption, cellulitis, severe cutaneous reactions (SJS/TEN)."},
+    {"id": "musculoskeletal_syndrome", "label": "Musculoskeletal syndrome", "summary": "Fracture, soft-tissue injury, arthritis, tendon/ligament, compartment."},
+    {"id": "psychiatric_syndrome", "label": "Psychiatric syndrome", "summary": "Mood, psychosis, substance, anxiety disorders; delirium overlap."},
+    {"id": "toxicologic_syndrome", "label": "Toxicologic syndrome", "summary": "Intoxication, overdose, withdrawal, envenomation, drug reactions."},
+    {"id": "trauma_syndrome", "label": "Trauma syndrome", "summary": "Blunt/penetrating injury: head, chest, abdomen, orthopedic, polytrauma."},
+    {"id": "obstetric_gynecologic_syndrome", "label": "Obstetric / gynecologic syndrome", "summary": "Pregnancy-related (eclampsia, ectopic), gynecologic emergencies."},
+    {"id": "ophthalmologic_syndrome", "label": "Ophthalmologic syndrome", "summary": "Vision-threatening eye disease; red eye, acute vision loss."},
+    {"id": "otolaryngologic_syndrome", "label": "ENT syndrome", "summary": "Upper airway, ear, nose, throat pathology; peritonsillar/retropharyngeal."},
+    {"id": "allergic_immunologic_syndrome", "label": "Allergic / immunologic syndrome", "summary": "Anaphylaxis, angioedema, immunodeficiency, hypersensitivity."},
+    {"id": "pediatric_syndrome", "label": "Pediatric-specific syndrome", "summary": "Age-specific pediatric emergencies (bronchiolitis, intussusception, Kawasaki)."},
+    {"id": "geriatric_syndrome", "label": "Geriatric syndrome", "summary": "Frailty, falls, delirium, polypharmacy-related decompensation."},
+    {"id": "nutritional_syndrome", "label": "Nutritional / vitamin deficiency syndrome", "summary": "Refeeding, Wernicke, pellagra, scurvy; malnutrition states."},
+    {"id": "environmental_exposure_syndrome", "label": "Environmental exposure syndrome", "summary": "Heat stroke, hypothermia, drowning, altitude, radiation."},
+    {"id": "genetic_syndrome", "label": "Genetic / inherited syndrome", "summary": "Mendelian disorders, inborn errors of metabolism, channelopathies."},
+    {"id": "iatrogenic_syndrome", "label": "Iatrogenic syndrome", "summary": "Device, procedure, drug-induced pathology not otherwise classified."}
+  ],
+  "genera": [],
+  "assignments": {}
+}

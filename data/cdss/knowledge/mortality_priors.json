@@ -1,0 +1,79 @@
+{
+  "_schema": "priors: {hypothesis_id: {e7d, e30d, e90d, benefit_if_treated, harm_if_untreated, harm_if_treated_wrong, tier}}. Probabilities in [0,1]. Tier ∈ {EMERGENCY, URGENT, ROUTINE}. Values curated from Emergency Medicine + internal-medicine prognostic guidelines (admit-discharge decision framing). Replace or extend over time with learned calibration.",
+  "_version": "w4.g.seed",
+  "priors": {
+    "acs_stemi":              {"e7d": 0.08, "e30d": 0.12, "e90d": 0.17, "benefit_if_treated": 0.80, "harm_if_untreated": 0.45, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "acs_nstemi":             {"e7d": 0.04, "e30d": 0.07, "e90d": 0.12, "benefit_if_treated": 0.72, "harm_if_untreated": 0.25, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+    "acs_unstable_angina":    {"e7d": 0.02, "e30d": 0.04, "e90d": 0.08, "benefit_if_treated": 0.70, "harm_if_untreated": 0.15, "harm_if_treated_wrong": 0.03, "tier": "URGENT"},
+    "pulmonary_embolism":     {"e7d": 0.08, "e30d": 0.13, "e90d": 0.20, "benefit_if_treated": 0.78, "harm_if_untreated": 0.40, "harm_if_treated_wrong": 0.10, "tier": "EMERGENCY"},
+    "aortic_dissection":      {"e7d": 0.25, "e30d": 0.35, "e90d": 0.45, "benefit_if_treated": 0.65, "harm_if_untreated": 0.75, "harm_if_treated_wrong": 0.08, "tier": "EMERGENCY"},
+    "cardiac_tamponade":      {"e7d": 0.30, "e30d": 0.40, "e90d": 0.45, "benefit_if_treated": 0.85, "harm_if_untreated": 0.90, "harm_if_treated_wrong": 0.10, "tier": "EMERGENCY"},
+    "tension_pneumothorax":   {"e7d": 0.30, "e30d": 0.32, "e90d": 0.33, "benefit_if_treated": 0.90, "harm_if_untreated": 0.90, "harm_if_treated_wrong": 0.08, "tier": "EMERGENCY"},
+
+    "sepsis":                 {"e7d": 0.12, "e30d": 0.22, "e90d": 0.30, "benefit_if_treated": 0.70, "harm_if_untreated": 0.55, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "septic_shock":           {"e7d": 0.25, "e30d": 0.38, "e90d": 0.48, "benefit_if_treated": 0.65, "harm_if_untreated": 0.75, "harm_if_treated_wrong": 0.06, "tier": "EMERGENCY"},
+    "urosepsis":              {"e7d": 0.08, "e30d": 0.15, "e90d": 0.22, "benefit_if_treated": 0.80, "harm_if_untreated": 0.40, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+    "pneumonia":              {"e7d": 0.04, "e30d": 0.10, "e90d": 0.18, "benefit_if_treated": 0.75, "harm_if_untreated": 0.25, "harm_if_treated_wrong": 0.03, "tier": "URGENT"},
+    "pneumonia_severe":       {"e7d": 0.10, "e30d": 0.20, "e90d": 0.30, "benefit_if_treated": 0.72, "harm_if_untreated": 0.45, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "meningitis_bacterial":   {"e7d": 0.15, "e30d": 0.22, "e90d": 0.28, "benefit_if_treated": 0.80, "harm_if_untreated": 0.75, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "necrotizing_fasciitis":  {"e7d": 0.30, "e30d": 0.40, "e90d": 0.45, "benefit_if_treated": 0.70, "harm_if_untreated": 0.85, "harm_if_treated_wrong": 0.10, "tier": "EMERGENCY"},
+
+    "ischemic_stroke":        {"e7d": 0.10, "e30d": 0.17, "e90d": 0.25, "benefit_if_treated": 0.60, "harm_if_untreated": 0.50, "harm_if_treated_wrong": 0.12, "tier": "EMERGENCY"},
+    "hemorrhagic_stroke":     {"e7d": 0.25, "e30d": 0.38, "e90d": 0.45, "benefit_if_treated": 0.50, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.15, "tier": "EMERGENCY"},
+    "sah":                    {"e7d": 0.30, "e30d": 0.40, "e90d": 0.45, "benefit_if_treated": 0.55, "harm_if_untreated": 0.70, "harm_if_treated_wrong": 0.12, "tier": "EMERGENCY"},
+    "tia":                    {"e7d": 0.03, "e30d": 0.05, "e90d": 0.10, "benefit_if_treated": 0.70, "harm_if_untreated": 0.15, "harm_if_treated_wrong": 0.03, "tier": "URGENT"},
+    "status_epilepticus":     {"e7d": 0.18, "e30d": 0.25, "e90d": 0.32, "benefit_if_treated": 0.75, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.06, "tier": "EMERGENCY"},
+
+    "dka":                    {"e7d": 0.03, "e30d": 0.05, "e90d": 0.08, "benefit_if_treated": 0.92, "harm_if_untreated": 0.50, "harm_if_treated_wrong": 0.06, "tier": "EMERGENCY"},
+    "hhs":                    {"e7d": 0.12, "e30d": 0.18, "e90d": 0.25, "benefit_if_treated": 0.85, "harm_if_untreated": 0.55, "harm_if_treated_wrong": 0.08, "tier": "EMERGENCY"},
+    "adrenal_crisis":         {"e7d": 0.20, "e30d": 0.28, "e90d": 0.33, "benefit_if_treated": 0.88, "harm_if_untreated": 0.70, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "thyroid_storm":          {"e7d": 0.15, "e30d": 0.22, "e90d": 0.28, "benefit_if_treated": 0.80, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.06, "tier": "EMERGENCY"},
+    "myxedema_coma":          {"e7d": 0.25, "e30d": 0.35, "e90d": 0.40, "benefit_if_treated": 0.70, "harm_if_untreated": 0.75, "harm_if_treated_wrong": 0.07, "tier": "EMERGENCY"},
+    "hypoglycemia":           {"e7d": 0.02, "e30d": 0.03, "e90d": 0.05, "benefit_if_treated": 0.95, "harm_if_untreated": 0.40, "harm_if_treated_wrong": 0.02, "tier": "EMERGENCY"},
+
+    "acute_heart_failure":    {"e7d": 0.05, "e30d": 0.11, "e90d": 0.22, "benefit_if_treated": 0.72, "harm_if_untreated": 0.30, "harm_if_treated_wrong": 0.05, "tier": "URGENT"},
+    "cardiogenic_shock":      {"e7d": 0.30, "e30d": 0.45, "e90d": 0.55, "benefit_if_treated": 0.55, "harm_if_untreated": 0.80, "harm_if_treated_wrong": 0.10, "tier": "EMERGENCY"},
+    "arrhythmia_vtach":       {"e7d": 0.15, "e30d": 0.22, "e90d": 0.30, "benefit_if_treated": 0.78, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.08, "tier": "EMERGENCY"},
+    "atrial_fibrillation_rvr":{"e7d": 0.03, "e30d": 0.06, "e90d": 0.12, "benefit_if_treated": 0.75, "harm_if_untreated": 0.18, "harm_if_treated_wrong": 0.05, "tier": "URGENT"},
+
+    "asthma_exacerbation":    {"e7d": 0.02, "e30d": 0.04, "e90d": 0.08, "benefit_if_treated": 0.85, "harm_if_untreated": 0.25, "harm_if_treated_wrong": 0.03, "tier": "URGENT"},
+    "asthma_status":          {"e7d": 0.10, "e30d": 0.15, "e90d": 0.20, "benefit_if_treated": 0.78, "harm_if_untreated": 0.55, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "copd_exacerbation":      {"e7d": 0.04, "e30d": 0.10, "e90d": 0.18, "benefit_if_treated": 0.72, "harm_if_untreated": 0.25, "harm_if_treated_wrong": 0.04, "tier": "URGENT"},
+    "ards":                   {"e7d": 0.25, "e30d": 0.35, "e90d": 0.42, "benefit_if_treated": 0.60, "harm_if_untreated": 0.70, "harm_if_treated_wrong": 0.08, "tier": "EMERGENCY"},
+
+    "gi_bleed_upper":         {"e7d": 0.05, "e30d": 0.10, "e90d": 0.18, "benefit_if_treated": 0.80, "harm_if_untreated": 0.35, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "gi_bleed_lower":         {"e7d": 0.03, "e30d": 0.07, "e90d": 0.12, "benefit_if_treated": 0.78, "harm_if_untreated": 0.25, "harm_if_treated_wrong": 0.04, "tier": "URGENT"},
+    "variceal_bleed":         {"e7d": 0.18, "e30d": 0.30, "e90d": 0.42, "benefit_if_treated": 0.72, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.06, "tier": "EMERGENCY"},
+    "perforated_viscus":      {"e7d": 0.20, "e30d": 0.30, "e90d": 0.38, "benefit_if_treated": 0.78, "harm_if_untreated": 0.70, "harm_if_treated_wrong": 0.08, "tier": "EMERGENCY"},
+    "appendicitis":           {"e7d": 0.02, "e30d": 0.03, "e90d": 0.05, "benefit_if_treated": 0.92, "harm_if_untreated": 0.35, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+    "cholecystitis":          {"e7d": 0.03, "e30d": 0.06, "e90d": 0.10, "benefit_if_treated": 0.88, "harm_if_untreated": 0.25, "harm_if_treated_wrong": 0.04, "tier": "URGENT"},
+    "pancreatitis":           {"e7d": 0.05, "e30d": 0.10, "e90d": 0.15, "benefit_if_treated": 0.75, "harm_if_untreated": 0.30, "harm_if_treated_wrong": 0.05, "tier": "URGENT"},
+    "mesenteric_ischemia":    {"e7d": 0.30, "e30d": 0.50, "e90d": 0.60, "benefit_if_treated": 0.60, "harm_if_untreated": 0.85, "harm_if_treated_wrong": 0.10, "tier": "EMERGENCY"},
+    "sbo":                    {"e7d": 0.04, "e30d": 0.08, "e90d": 0.13, "benefit_if_treated": 0.82, "harm_if_untreated": 0.30, "harm_if_treated_wrong": 0.05, "tier": "URGENT"},
+
+    "aki":                    {"e7d": 0.05, "e30d": 0.12, "e90d": 0.20, "benefit_if_treated": 0.70, "harm_if_untreated": 0.30, "harm_if_treated_wrong": 0.05, "tier": "URGENT"},
+    "aki_prerenal":           {"e7d": 0.03, "e30d": 0.08, "e90d": 0.15, "benefit_if_treated": 0.85, "harm_if_untreated": 0.25, "harm_if_treated_wrong": 0.04, "tier": "URGENT"},
+    "aki_intrinsic":          {"e7d": 0.06, "e30d": 0.15, "e90d": 0.25, "benefit_if_treated": 0.68, "harm_if_untreated": 0.35, "harm_if_treated_wrong": 0.05, "tier": "URGENT"},
+    "aki_postrenal":          {"e7d": 0.04, "e30d": 0.08, "e90d": 0.15, "benefit_if_treated": 0.88, "harm_if_untreated": 0.30, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+    "hyperkalemia_severe":    {"e7d": 0.12, "e30d": 0.15, "e90d": 0.18, "benefit_if_treated": 0.92, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "hyponatremia_severe":    {"e7d": 0.08, "e30d": 0.12, "e90d": 0.18, "benefit_if_treated": 0.82, "harm_if_untreated": 0.45, "harm_if_treated_wrong": 0.10, "tier": "EMERGENCY"},
+
+    "anaphylaxis":            {"e7d": 0.03, "e30d": 0.04, "e90d": 0.05, "benefit_if_treated": 0.95, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+    "angioedema":             {"e7d": 0.05, "e30d": 0.06, "e90d": 0.08, "benefit_if_treated": 0.85, "harm_if_untreated": 0.35, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+
+    "opioid_overdose":        {"e7d": 0.05, "e30d": 0.08, "e90d": 0.12, "benefit_if_treated": 0.92, "harm_if_untreated": 0.60, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+    "tca_overdose":           {"e7d": 0.15, "e30d": 0.18, "e90d": 0.22, "benefit_if_treated": 0.80, "harm_if_untreated": 0.65, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "acetaminophen_toxicity": {"e7d": 0.08, "e30d": 0.14, "e90d": 0.20, "benefit_if_treated": 0.88, "harm_if_untreated": 0.50, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+
+    "ectopic_pregnancy":      {"e7d": 0.05, "e30d": 0.07, "e90d": 0.08, "benefit_if_treated": 0.92, "harm_if_untreated": 0.55, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+    "testicular_torsion":     {"e7d": 0.01, "e30d": 0.02, "e90d": 0.03, "benefit_if_treated": 0.95, "harm_if_untreated": 0.90, "harm_if_treated_wrong": 0.04, "tier": "EMERGENCY"},
+    "ovarian_torsion":        {"e7d": 0.02, "e30d": 0.03, "e90d": 0.04, "benefit_if_treated": 0.92, "harm_if_untreated": 0.70, "harm_if_treated_wrong": 0.05, "tier": "EMERGENCY"},
+
+    "migraine":               {"e7d": 0.00, "e30d": 0.01, "e90d": 0.02, "benefit_if_treated": 0.80, "harm_if_untreated": 0.05, "harm_if_treated_wrong": 0.02, "tier": "ROUTINE"},
+    "viral_syndrome":         {"e7d": 0.00, "e30d": 0.01, "e90d": 0.02, "benefit_if_treated": 0.60, "harm_if_untreated": 0.05, "harm_if_treated_wrong": 0.02, "tier": "ROUTINE"},
+    "gastroenteritis":        {"e7d": 0.01, "e30d": 0.02, "e90d": 0.03, "benefit_if_treated": 0.80, "harm_if_untreated": 0.08, "harm_if_treated_wrong": 0.02, "tier": "ROUTINE"},
+    "musculoskeletal_pain":   {"e7d": 0.00, "e30d": 0.01, "e90d": 0.02, "benefit_if_treated": 0.70, "harm_if_untreated": 0.05, "harm_if_treated_wrong": 0.02, "tier": "ROUTINE"},
+    "uti_uncomplicated":      {"e7d": 0.00, "e30d": 0.02, "e90d": 0.05, "benefit_if_treated": 0.92, "harm_if_untreated": 0.12, "harm_if_treated_wrong": 0.03, "tier": "ROUTINE"},
+    "cellulitis":             {"e7d": 0.02, "e30d": 0.05, "e90d": 0.10, "benefit_if_treated": 0.88, "harm_if_untreated": 0.20, "harm_if_treated_wrong": 0.03, "tier": "URGENT"}
+  }
+}

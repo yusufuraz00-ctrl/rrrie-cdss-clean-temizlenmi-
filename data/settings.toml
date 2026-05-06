@@ -1,0 +1,7 @@
+# RRRIE-CDSS persisted user preferences
+# This file is safe to edit manually.
+operation_mode_default = "local_core_with_online_r2"
+runtime_profile_default = "compact_4gb"
+runtime_profile_dllm_mode = "auto"
+reasoning_mode = "fast"
+updated_at = "2026-05-06T20:35:55Z"

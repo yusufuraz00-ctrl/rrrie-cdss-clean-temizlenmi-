@@ -1,0 +1,89 @@
+{
+  "_schema": "axis_query_templates_v1",
+  "_doc": "Fallback retrieval-query templates indexed by phenotype-fingerprint axis. Used by planner._axis_template_intents when the gap-driven hypothesis frontier is too thin to produce informative queries (Plan Item 6). Each axis has 2-3 PubMed-style query templates. Solo axes match a single dominant axis; pair axes match two co-dominant axes. Adding new axes is a data PR, not a code change.",
+  "_version": "v1.0",
+  "solo": {
+    "inflammatory_infectious": [
+      "fever altered mental status differential diagnosis must-not-miss",
+      "systemic inflammatory response sepsis criteria emergency"
+    ],
+    "hemodynamic": [
+      "acute hemodynamic instability differential shock causes",
+      "tachycardia hypotension acute presentation workup"
+    ],
+    "toxic_exposure": [
+      "toxidrome differential diagnosis acute exposure",
+      "drug overdose poisoning emergency assessment"
+    ],
+    "neurologic": [
+      "acute focal neurologic deficit differential emergency",
+      "altered mental status neurologic workup"
+    ],
+    "metabolic_endocrine": [
+      "metabolic acidosis anion gap differential workup",
+      "endocrine emergency adrenal thyroid differential"
+    ],
+    "respiratory": [
+      "acute dyspnea differential diagnosis emergency",
+      "hypoxia tachypnea workup must-not-miss"
+    ],
+    "cardiac": [
+      "acute chest pain differential cardiac noncardiac",
+      "syncope cardiac workup emergency"
+    ],
+    "abdominal": [
+      "acute abdomen differential diagnosis surgical emergency",
+      "abdominal pain vomiting workup must-not-miss"
+    ],
+    "musculoskeletal": [
+      "acute monoarticular joint pain differential",
+      "atraumatic bone pain night pain malignancy workup"
+    ],
+    "dermatologic": [
+      "acral painful lesions differential systemic causes",
+      "rash fever acute differential petechial purpuric"
+    ],
+    "vascular": [
+      "acute vascular occlusion dissection differential",
+      "limb ischemia stroke vessel imaging workup"
+    ],
+    "undifferentiated": [
+      "undifferentiated symptom cluster differential approach",
+      "multisystem complaint workup primary care"
+    ]
+  },
+  "pair": {
+    "inflammatory_infectious|neurologic": [
+      "fever altered mental status meningitis encephalitis differential",
+      "neurologic infection lumbar puncture indication empiric therapy"
+    ],
+    "neurologic|vascular": [
+      "horner syndrome carotid vertebral dissection differential",
+      "acute focal neurologic deficit vessel imaging indication"
+    ],
+    "hemodynamic|metabolic_endocrine": [
+      "tachycardia tachypnea metabolic acidosis differential",
+      "kussmaul respiration anion gap workup ketoacidosis"
+    ],
+    "abdominal|metabolic_endocrine": [
+      "vomiting tachypnea alcohol differential pancreatitis ketoacidosis",
+      "abdominal pain metabolic acidosis differential workup"
+    ],
+    "dermatologic|cardiac": [
+      "acral lesions new dyspnea fever endocarditis differential",
+      "osler janeway lesions blood culture echocardiography"
+    ],
+    "musculoskeletal|inflammatory_infectious": [
+      "bone pain night pain fever pediatric malignancy osteomyelitis",
+      "constitutional symptoms bone pain differential leukemia sarcoma"
+    ],
+    "respiratory|vascular": [
+      "sudden dyspnea immobility pulmonary embolism workup",
+      "tachypnea hypoxia DVT risk factors imaging"
+    ],
+    "cardiac|vascular": [
+      "tearing chest pain hypertension aortic dissection workup",
+      "asymmetric pulses chest pain CT angiography emergency"
+    ]
+  }
+}

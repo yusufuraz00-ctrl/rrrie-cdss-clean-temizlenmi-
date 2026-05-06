@@ -1,0 +1,220 @@
+{
+  "_schema": "syndrome_combos_v1",
+  "_doc": "Symbolic conjunction-rule overlay. Each top-level key is a profile_id; entry attaches pathognomonic_combos (AND-conjunctions) and chained_triggers (temporal mechanism chains). Atom labels are matched token-wise against the case PhenotypeFingerprint. See SyndromeCombo / ChainedTrigger pydantic models for the field schema. This file is curated clinical knowledge (HEART/Wells/Centor-style). No code changes are needed to add a new rule; clinical reviewers edit the JSON.",
+
+  "carotid_artery_dissection": {
+    "label": "Carotid or vertebral artery dissection",
+    "summary": "Acute Horner syndrome after neck strain or minor trauma is a vascular emergency until proven otherwise; demands urgent vessel imaging (CTA/MRA) before any massage, manipulation, or topical therapy.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "horner_triad_post_neck_strain",
+        "required_atoms": ["ptosis", "miosis"],
+        "optional_atoms": ["anhidrosis", "neck_pain", "neck_strain"],
+        "rationale": "Ipsilateral ptosis + miosis (± anhidrosis) is Horner syndrome; in an adult after neck mechanical strain it indicates arterial wall dissection until vessel imaging excludes it.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "infective_endocarditis": {
+    "label": "Infective endocarditis",
+    "summary": "Recent oral/dental instrumentation followed by acral painful purple lesions and new cardiopulmonary symptoms suggests bacteremic seeding of cardiac valves; demands blood cultures and echocardiography before any dental, dermatology, or symptomatic-only management.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "chained_triggers": [
+      {
+        "name": "dental_procedure_to_embolic_stigmata",
+        "trigger_atom": "dental_procedure",
+        "window_days": 60,
+        "consequent_atoms": ["acral_purple_lesions"],
+        "optional_atoms": ["new_dyspnea", "fever", "gingival_bleeding", "fatigue", "palpitations"],
+        "consequent_dx": "infective_endocarditis",
+        "rationale": "Dental procedure → transient bacteremia → seeding of cardiac valves → Osler nodes / Janeway lesions in the periphery + new heart-failure symptoms.",
+        "promotes_to_priority": "must_not_miss"
+      },
+      {
+        "name": "intravenous_drug_use_to_cardiopulm_signs",
+        "trigger_atom": "intravenous_drug_use",
+        "window_days": 90,
+        "consequent_atoms": ["fever", "new_dyspnea"],
+        "optional_atoms": ["acral_purple_lesions", "gingival_bleeding"],
+        "consequent_dx": "infective_endocarditis",
+        "rationale": "IVDU is a strong endocarditis substrate; new fever plus cardiopulmonary symptoms is endocarditis until proven otherwise.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "bacterial_meningitis": {
+    "label": "Bacterial meningitis",
+    "summary": "Classical triad — fever, neck stiffness, altered mental status — is a time-critical neurologic emergency; demands CT/LP and empirical broad-spectrum antibiotics before any sedative or psychiatric disposition.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "meningitis_classical_triad",
+        "required_atoms": ["fever", "neck_stiffness", "altered_mental_status"],
+        "optional_atoms": ["headache", "photophobia", "petechial_rash", "vomiting"],
+        "rationale": "Fever + meningismus + AMS is the textbook triad. Petechial rash raises probability of meningococcal sepsis specifically.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "viral_encephalitis": {
+    "label": "Viral (HSV) encephalitis",
+    "summary": "Fever + altered mental status + behavioural change or hallucinations (with or without neck stiffness) is encephalitis until proven otherwise; demands empirical aciclovir, neuroimaging, and LP — never sedation-only management.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "encephalitis_behavioural_triad",
+        "required_atoms": ["fever", "altered_mental_status"],
+        "optional_atoms": ["hallucinations", "bizarre_behaviour", "headache", "neck_stiffness", "seizure", "personality_change"],
+        "rationale": "HSV encephalitis canonically presents with febrile delirium / psychotic-appearing behaviour; meningismus may be absent. Empirical aciclovir is mandatory.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "pediatric_bone_malignancy": {
+    "label": "Pediatric bone malignancy (osteosarcoma, Ewing sarcoma, leukemic infiltration)",
+    "summary": "In a child or adolescent, bone pain that wakes at night plus constitutional B-symptoms (fevers, weight loss, anorexia) is malignancy until imaging and CBC rule it out, regardless of any antecedent minor trauma.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "pediatric_night_bone_pain_with_b_symptoms",
+        "required_atoms": ["bone_pain", "night_pain"],
+        "optional_atoms": ["weight_loss", "fever", "anorexia", "fatigue", "limp"],
+        "trigger_context": {"min_age": 2, "max_age": 21},
+        "rationale": "Night-waking bone pain is a textbook red flag for osteosarcoma / Ewing sarcoma; combined with B-symptoms it raises haematologic malignancy. Trauma history does NOT exclude it.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "alcoholic_ketoacidosis": {
+    "label": "Alcoholic ketoacidosis",
+    "summary": "Chronic-alcohol patient with vomiting, anorexia, and Kussmaul (deep, rapid) respiration has high anion-gap metabolic acidosis until VBG/electrolytes prove otherwise; demands IV dextrose + thiamine, NOT antiemetic-and-discharge.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "kussmaul_with_alcohol_starvation",
+        "required_atoms": ["kussmaul_respiration", "alcohol_use"],
+        "optional_atoms": ["vomiting", "anorexia", "abdominal_pain", "tachypnea"],
+        "rationale": "Deep rapid breathing in an alcohol-misusing patient who has stopped eating signals AKA / DKA / lactic acidosis — respiratory compensation for metabolic acidosis. Antiemetics alone can mask the underlying acidosis.",
+        "promotes_to_priority": "must_not_miss"
+      },
+      {
+        "name": "tachypnea_with_alcohol_starvation",
+        "required_atoms": ["tachypnea", "alcohol_use", "vomiting"],
+        "optional_atoms": ["anorexia", "abdominal_pain"],
+        "rationale": "Even without explicit Kussmaul labeling, persistent tachypnea after several days of vomiting and alcohol use is the same physiology — metabolic acidosis with respiratory compensation.",
+        "promotes_to_priority": "high"
+      }
+    ]
+  },
+
+  "acute_pancreatitis": {
+    "label": "Acute pancreatitis",
+    "summary": "Persistent severe epigastric pain with vomiting in an alcohol-misusing patient (or one with gallstones) demands lipase, electrolytes, and imaging; antiemetic-only treatment misses necrotizing pancreatitis.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "alcohol_pancreatitis_pattern",
+        "required_atoms": ["abdominal_pain", "vomiting", "alcohol_use"],
+        "optional_atoms": ["epigastric_pain", "anorexia", "tachypnea", "fever"],
+        "rationale": "Classical alcoholic acute pancreatitis presentation. Tachypnea may also signal AKA — both differentials must be checked.",
+        "promotes_to_priority": "high"
+      }
+    ]
+  },
+
+  "massive_pulmonary_embolism": {
+    "label": "Massive pulmonary embolism",
+    "summary": "Sudden dyspnea + tachycardia after immobility, surgery, or recent cancer treatment demands CTPA / d-dimer; reproducing tachypnea + hypoxia on minimal exertion is a red flag.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "chained_triggers": [
+      {
+        "name": "immobility_to_acute_dyspnea",
+        "trigger_atom": "recent_immobility",
+        "window_days": 14,
+        "consequent_atoms": ["dyspnea"],
+        "optional_atoms": ["tachycardia", "pleuritic_chest_pain", "hemoptysis", "syncope"],
+        "consequent_dx": "massive_pulmonary_embolism",
+        "rationale": "Long-haul travel, post-op, or cancer-related immobility followed by sudden dyspnea is the classical PE chain.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "aortic_dissection": {
+    "label": "Acute aortic dissection",
+    "summary": "Sudden tearing or ripping chest/back pain with hypertension or unequal pulses is dissection until CT angiography excludes it; do NOT discharge as musculoskeletal.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "tearing_chest_pain_with_hypertension",
+        "required_atoms": ["chest_pain", "tearing_quality"],
+        "optional_atoms": ["back_pain", "hypertension", "pulse_asymmetry", "syncope"],
+        "rationale": "Tearing/ripping pain is the historical pathognomonic descriptor; the combo with hypertension or asymmetric pulses raises pretest probability dramatically.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "necrotizing_soft_tissue_infection": {
+    "label": "Necrotizing fasciitis / soft-tissue infection",
+    "summary": "Pain out of proportion to skin findings + erythema + fever (± crepitus) is a surgical emergency; antibiotic-only management is a sentinel error.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "pain_out_of_proportion_with_erythema_fever",
+        "required_atoms": ["pain_out_of_proportion", "erythema", "fever"],
+        "optional_atoms": ["crepitus", "skin_necrosis", "tachycardia", "hypotension"],
+        "rationale": "Pain out of proportion to visible skin change is the textbook early sign before frank skin necrosis appears.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "cauda_equina_syndrome": {
+    "label": "Cauda equina syndrome",
+    "summary": "Saddle anesthesia + new urinary retention or incontinence + low back pain is a spinal-cord emergency requiring urgent MRI and surgical decompression.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "saddle_anesthesia_with_retention",
+        "required_atoms": ["saddle_anesthesia", "urinary_retention"],
+        "optional_atoms": ["back_pain", "leg_weakness", "fecal_incontinence"],
+        "rationale": "Combination is near-pathognomonic; missing it produces permanent disability.",
+        "promotes_to_priority": "must_not_miss"
+      }
+    ]
+  },
+
+  "wernicke_encephalopathy": {
+    "label": "Wernicke encephalopathy",
+    "summary": "Alcohol misuse + ataxia + ophthalmoplegia or confusion is Wernicke until proven otherwise; demands IV thiamine BEFORE any glucose.",
+    "must_not_miss": true,
+    "dangerous_if_missed": true,
+    "pathognomonic_combos": [
+      {
+        "name": "wernicke_classic_triad",
+        "required_atoms": ["alcohol_use"],
+        "optional_atoms": ["ataxia", "ophthalmoplegia", "confusion", "altered_mental_status", "nystagmus"],
+        "rationale": "Even partial triad in an alcohol-misusing patient warrants empiric thiamine; full triad is rare in clinical practice.",
+        "promotes_to_priority": "high"
+      }
+    ]
+  }
+}

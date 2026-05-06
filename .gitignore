@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.local
+
+# Runtime assets
+models/*.gguf
+models/.cache/
+llama-server/
+portable/
+output/
+artifacts/
+tmp/
+*.zip
+
+# Logs
+*.log
+
+# Databases and sqlite sidecars
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+*.sqlite-shm
+*.sqlite-wal
+
+# Generated reports and caches
+config/drug_cache.json
+data/reports/
+data/generated_cases/
+data/runtime_decision_cache.json
+
+# Local workspace artifacts
+clinical-learning-work/
+files_to_clean.txt
+git_status*.txt
+setup/requirements.locked.txt
+swarm_verify.json
+test_output*.txt
+tmp_charter.txt
+tmp_week5.txt

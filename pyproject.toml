@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rrrie-cdss"
+version = "0.1.0"
+description = "Autonomous RRRIE-Based Clinical Decision Support System"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [
+    { name = "RRRIE-CDSS Team" }
+]
+
+dependencies = [
+    "fastapi==0.115.13",
+    "uvicorn[standard]==0.34.3",
+    "httpx==0.28.1",
+    "requests==2.32.5",
+    "pydantic==2.11.4",
+    "pydantic-settings==2.13.1",
+    "python-dotenv==1.0.1",
+    "structlog==25.4.0",
+    "google-genai==1.16.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.2",
+    "pytest-asyncio==1.3.0",
+    "ruff>=0.4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "gui*", "config*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["output", "data", ".venv", "llama-server", "models"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]
+# BLE001 (blind-except) is enabled per-file via `# noqa: BLE001` on intentional sites.
+# 122 pre-existing bare-except sites that *do* return values remain as known tech debt.
+extend-select = []

@@ -1,0 +1,1385 @@
+{
+  "profiles": [
+    {
+      "id": "inferior_myocardial_infarction_with_possible_rv_involvement",
+      "label": "inferior_myocardial_infarction_with_possible_rv_involvement",
+      "summary": "Inferior myocardial infarction pattern with possible right-ventricular involvement and preload-sensitive hemodynamics.",
+      "cue_lexicon": [
+        "inferior mi",
+        "inferior myocardial infarction",
+        "inferior stemi",
+        "kalp krizi",
+        "chest pressure",
+        "cold sweat",
+        "diaphoresis",
+        "nausea",
+        "bradycardia",
+        "borderline hypotension",
+        "nitroglycerin",
+        "morphine"
+      ],
+      "evidence_needs": [
+        "right_sided_ecg_v4r",
+        "objective_vitals",
+        "inferior_stemi_confirmation",
+        "hemodynamic_assessment"
+      ],
+      "challenge_queries": [
+        "inferior MI right ventricular involvement nitroglycerin contraindication",
+        "right ventricular infarction preload dependence morphine contraindication",
+        "inferior STEMI V4R fluid bolus guidance"
+      ],
+      "immediate_actions": [
+        "obtain_right_sided_ecg_v4r",
+        "avoid_nitroglycerin_and_morphine",
+        "consider_isotonic_iv_fluid_bolus_if_no_pulmonary_edema"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "routine_acs_nitrate_protocol",
+      "unsafe_interventions": [
+        "nitroglycerin",
+        "morphine"
+      ]
+    },
+    {
+      "id": "cardiorespiratory_process",
+      "label": "cardiorespiratory_process",
+      "summary": "Acute chest, breathing, or oxygenation-related syndrome family.",
+      "cue_lexicon": [
+        "chest pain",
+        "chest",
+        "dyspnea",
+        "shortness of breath",
+        "breath",
+        "hemoptysis",
+        "hypoxemia",
+        "tachycardia"
+      ],
+      "evidence_needs": [
+        "pulse_oximetry",
+        "ecg",
+        "chest_imaging",
+        "focused_cardiopulmonary_exam"
+      ],
+      "challenge_queries": [
+        "pulmonary embolism differential",
+        "acute coronary syndrome risk",
+        "hypoxemia red flags"
+      ],
+      "immediate_actions": [
+        "obtain_objective_vitals",
+        "assess_oxygenation",
+        "same_day_cardiopulmonary_evaluation"
+      ]
+    },
+    {
+      "id": "influenza_like_viral_uri",
+      "label": "influenza_like_viral_uri",
+      "summary": "Self-limited influenza-like viral upper respiratory illness with stable outpatient physiology.",
+      "cue_lexicon": [
+        "fever",
+        "sore throat",
+        "dry cough",
+        "runny nose",
+        "body aches",
+        "sick contacts",
+        "teacher",
+        "comfortable breathing",
+        "spo2 98"
+      ],
+      "evidence_needs": [
+        "objective_vitals",
+        "respiratory_red_flag_screen",
+        "symptom_timeline",
+        "outpatient_safety_netting"
+      ],
+      "challenge_queries": [
+        "influenza like illness outpatient red flags review",
+        "viral upper respiratory infection stable adult differential"
+      ],
+      "immediate_actions": [
+        "supportive_outpatient_management_if_no_red_flags",
+        "return_precautions_for_respiratory_worsening",
+        "avoid_unnecessary_emergency_escalation_if_stable"
+      ]
+    },
+    {
+      "id": "viral_pharyngitis",
+      "label": "viral_pharyngitis",
+      "summary": "Uncomplicated viral pharyngitis or upper-airway viral syndrome without unstable physiology.",
+      "cue_lexicon": [
+        "sore throat",
+        "runny nose",
+        "cough",
+        "fever",
+        "viral",
+        "congestion"
+      ],
+      "evidence_needs": [
+        "focused_upper_airway_history",
+        "objective_vitals",
+        "respiratory_red_flag_screen"
+      ],
+      "challenge_queries": [
+        "viral pharyngitis red flags outpatient review",
+        "viral sore throat adult differential"
+      ],
+      "immediate_actions": [
+        "supportive_care_if_stable",
+        "return_precautions_if_swallowing_or_breathing_worsens"
+      ]
+    },
+    {
+      "id": "acute_bronchitis_low_risk",
+      "label": "acute_bronchitis_low_risk",
+      "summary": "Acute low-risk bronchitic illness with cough but without hypoxemia, sepsis, or focal instability.",
+      "cue_lexicon": [
+        "cough",
+        "viral",
+        "comfortable breathing",
+        "no fever",
+        "stable spo2",
+        "upper respiratory"
+      ],
+      "evidence_needs": [
+        "objective_vitals",
+        "respiratory_red_flag_screen",
+        "outpatient_followup_if_persistent"
+      ],
+      "challenge_queries": [
+        "acute bronchitis outpatient red flags review",
+        "acute cough stable adult no hypoxemia differential"
+      ],
+      "immediate_actions": [
+        "supportive_care_if_stable",
+        "avoid_unnecessary_antibiotic_or_emergency_escalation_if_no_red_flags"
+      ]
+    },
+    {
+      "id": "self_limited_gastroenteritis",
+      "label": "self_limited_gastroenteritis",
+      "summary": "Likely self-limited infectious gastroenteritis without shock, severe dehydration, or focal surgical abdomen.",
+      "cue_lexicon": [
+        "vomiting",
+        "diarrhea",
+        "loose stools",
+        "sick contacts",
+        "sick family",
+        "cramping",
+        "crampy abdominal discomfort",
+        "still drinking fluids",
+        "mild dehydration",
+        "no blood",
+        "no blood in stool"
+      ],
+      "evidence_needs": [
+        "hydration_assessment",
+        "objective_vitals",
+        "abdominal_red_flag_screen"
+      ],
+      "challenge_queries": [
+        "infectious gastroenteritis outpatient red flags review",
+        "self limited diarrhea vomiting adult differential"
+      ],
+      "immediate_actions": [
+        "oral_rehydration_if_tolerated",
+        "return_precautions_for_dehydration_or_peritonitic_features"
+      ]
+    },
+    {
+      "id": "viral_upper_respiratory_infection",
+      "label": "viral_upper_respiratory_infection",
+      "summary": "Benign viral upper respiratory infection pattern with cough, coryza, sore throat, and stable vital signs.",
+      "cue_lexicon": [
+        "runny nose",
+        "dry cough",
+        "sore throat",
+        "body aches",
+        "viral uri",
+        "sick contacts",
+        "stable vitals"
+      ],
+      "evidence_needs": [
+        "objective_vitals",
+        "respiratory_red_flag_screen",
+        "outpatient_safety_netting"
+      ],
+      "challenge_queries": [
+        "viral upper respiratory infection outpatient warning signs",
+        "viral uri stable adult review"
+      ],
+      "immediate_actions": [
+        "supportive_care_if_stable",
+        "return_precautions_for_hypoxemia_or_progressive_fever"
+      ]
+    },
+    {
+      "id": "massive_pulmonary_embolism_with_obstructive_risk",
+      "label": "massive_pulmonary_embolism_with_obstructive_risk",
+      "summary": "Massive or hemodynamically significant pulmonary embolism with acute right-heart strain and obstructive shock risk.",
+      "cue_lexicon": [
+        "pulmonary embol",
+        "s1q3t3",
+        "long flight",
+        "leg swelling",
+        "hypoxemia",
+        "tachycardia",
+        "pleuritic chest pain",
+        "unilateral_leg_swelling"
+      ],
+      "evidence_needs": [
+        "ct_pulmonary_angiography_or_pe_pathway",
+        "pulse_oximetry",
+        "hemodynamic_assessment",
+        "dvt_risk_context"
+      ],
+      "challenge_queries": [
+        "pulmonary embolism S1Q3T3 massive PE treatment",
+        "S1Q3T3 right heart strain pulmonary embolism review",
+        "massive pulmonary embolism hypotension thrombolysis guidance"
+      ],
+      "immediate_actions": [
+        "ct_pulmonary_angiography_or_pe_pathway",
+        "stabilize_oxygenation_and_hemodynamics",
+        "evaluate_thrombolysis_eligibility",
+        "avoid_anchoring_on_acs_only"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "acute_coronary_syndrome",
+      "unsafe_interventions": [
+        "nitroglycerin",
+        "angiography"
+      ]
+    },
+    {
+      "id": "acute_aortic_syndrome",
+      "label": "acute_aortic_syndrome",
+      "summary": "Acute aortic syndrome with dissection-style pain, perfusion asymmetry, or branch-vessel compromise.",
+      "cue_lexicon": [
+        "aortic dissection",
+        "acute aortic syndrome",
+        "tearing pain",
+        "sudden chest pain",
+        "pain radiating to the back",
+        "between the shoulder blades",
+        "bp differential",
+        "right arm blood pressure",
+        "left arm blood pressure",
+        "pulse deficit",
+        "right arm numbness"
+      ],
+      "evidence_needs": [
+        "cta_or_aortic_imaging_pathway",
+        "bilateral_blood_pressure_assessment",
+        "focused_vascular_neurologic_exam",
+        "urgent_surgical_escalation"
+      ],
+      "challenge_queries": [
+        "acute aortic syndrome tearing chest pain pulse deficit review",
+        "aortic dissection blood pressure differential anticoagulation harm",
+        "acute aortic syndrome emergency imaging surgical consultation"
+      ],
+      "immediate_actions": [
+        "cta_or_aortic_imaging_pathway",
+        "cardiothoracic_or_vascular_surgery_consult",
+        "avoid_antithrombotic_anchoring_until_dissection_excluded"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "acute_coronary_syndrome_antithrombotic_protocol",
+      "unsafe_interventions": [
+        "heparin",
+        "aspirin"
+      ]
+    },
+    {
+      "id": "thyroid_storm_or_thyrotoxic_crisis",
+      "label": "thyroid_storm_or_thyrotoxic_crisis",
+      "summary": "Decompensated thyrotoxicosis with hyperadrenergic, hyperthermic, gastrointestinal, and neuropsychiatric instability.",
+      "cue_lexicon": [
+        "thyroid storm",
+        "thyrotoxic crisis",
+        "thyrotoxicosis",
+        "hyperthyroidism",
+        "graves disease",
+        "toxic goiter",
+        "zehirli guatr",
+        "agitation",
+        "delirium",
+        "severe tachycardia",
+        "high fever",
+        "diarrhea",
+        "wide pulse pressure",
+        "medication_nonadherence"
+      ],
+      "evidence_needs": [
+        "thyroid_function_testing",
+        "focused_medication_history",
+        "hemodynamic_assessment",
+        "endocrine_emergency_treatment_pathway"
+      ],
+      "challenge_queries": [
+        "thyroid storm neuropsychiatric presentation tachycardia hyperpyrexia review",
+        "thyroid storm aspirin salicylate contraindication free t3 t4 review",
+        "thyroid storm beta blocker thionamide hydrocortisone emergency treatment review"
+      ],
+      "immediate_actions": [
+        "start_endocrine_emergency_pathway",
+        "avoid_salicylates_use_acetaminophen_for_fever",
+        "consider_beta_blockade_thionamide_and_steroid_if_clinically_appropriate"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "primary_psychiatric_agitation_or_sympathomimetic_toxidrome",
+      "unsafe_interventions": [
+        "aspirin"
+      ]
+    },
+    {
+      "id": "neurologic_process",
+      "label": "neurologic_process",
+      "summary": "Acute neurologic or altered-consciousness syndrome family.",
+      "cue_lexicon": [
+        "headache",
+        "seizure",
+        "confusion",
+        "weakness",
+        "altered mental status",
+        "loss of consciousness",
+        "syncope",
+        "rigidity"
+      ],
+      "evidence_needs": [
+        "neurologic_exam",
+        "glucose_check",
+        "neuro_imaging_or_eeg",
+        "mental_status_timeline"
+      ],
+      "challenge_queries": [
+        "meningitis red flags",
+        "status epilepticus mimic",
+        "acute neurologic emergency workup"
+      ],
+      "immediate_actions": [
+        "urgent_neurologic_assessment",
+        "check_glucose_immediately",
+        "document_focal_deficits"
+      ]
+    },
+    {
+      "id": "metabolic_or_abdominal_process",
+      "label": "metabolic_or_abdominal_process",
+      "summary": "Metabolic crisis or acute abdominal syndrome family.",
+      "cue_lexicon": [
+        "abdominal pain",
+        "abdominal",
+        "vomiting",
+        "vomit",
+        "thirst",
+        "polyuria",
+        "urine",
+        "deep breathing",
+        "kussmaul",
+        "lethargy"
+      ],
+      "evidence_needs": [
+        "point_of_care_glucose",
+        "blood_gas",
+        "serum_ketones_or_metabolic_panel",
+        "abdominal_exam"
+      ],
+      "challenge_queries": [
+        "diabetic ketoacidosis pediatric signs",
+        "acute abdominal red flags",
+        "metabolic acidosis bedside clues"
+      ],
+      "immediate_actions": [
+        "check_glucose_immediately",
+        "same_day_emergency_assessment",
+        "verify_hydration_and_mental_status"
+      ]
+    },
+    {
+      "id": "alcohol_related_hypoglycemia_with_wernicke_risk",
+      "label": "alcohol_related_hypoglycemia_with_wernicke_risk",
+      "summary": "Alcohol-related hypoglycemia with possible thiamine deficiency and Wernicke-risk neurologic vulnerability.",
+      "cue_lexicon": [
+        "alcohol",
+        "nystagmus",
+        "hypoglycemia",
+        "glucose 40",
+        "coma",
+        "altered mental status",
+        "dextrose",
+        "bilinci kapalı"
+      ],
+      "evidence_needs": [
+        "point_of_care_glucose",
+        "mental_status_timeline",
+        "thiamine_deficiency_context",
+        "repeat_glucose_monitoring"
+      ],
+      "challenge_queries": [
+        "alcohol hypoglycemia thiamine wernicke emergency guidance",
+        "Wernicke encephalopathy nystagmus hypoglycemia review",
+        "severe hypoglycemia alcohol dextrose thiamine emergency medicine"
+      ],
+      "immediate_actions": [
+        "do_not_delay_glucose_if_severely_hypoglycemic",
+        "give_parenteral_thiamine",
+        "repeat_glucose_and_neuro_reassessment"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "isolated_hypoglycemia_without_thiamine_protection"
+    },
+    {
+      "id": "infectious_inflammatory_process",
+      "label": "infectious_inflammatory_process",
+      "summary": "Infectious, inflammatory, or sepsis-adjacent syndrome family.",
+      "cue_lexicon": [
+        "fever",
+        "rash",
+        "neck stiffness",
+        "stiffness",
+        "chills",
+        "toxic appearance",
+        "hypotension",
+        "worsening"
+      ],
+      "evidence_needs": [
+        "infection_focused_history",
+        "cbc_and_inflammatory_markers",
+        "cultures_or_source_workup",
+        "serial_vitals"
+      ],
+      "challenge_queries": [
+        "sepsis early warning signs",
+        "meningitis presentation",
+        "infectious endocarditis clues"
+      ],
+      "immediate_actions": [
+        "assess_for_sepsis",
+        "repeat_vitals",
+        "urgent_clinician_review"
+      ]
+    },
+    {
+      "id": "pancreaticobiliary_malignancy_with_obstructive_jaundice",
+      "label": "pancreaticobiliary_malignancy_with_obstructive_jaundice",
+      "summary": "Pancreaticobiliary obstructive jaundice pattern with constitutional decline and malignancy concern.",
+      "cue_lexicon": [
+        "painless jaundice",
+        "obstructive jaundice",
+        "dark urine",
+        "tea-colored urine",
+        "pale stools",
+        "weight loss",
+        "poor appetite",
+        "epigastric discomfort",
+        "radiating to the back",
+        "smoker",
+        "biliary obstruction",
+        "pancreatic"
+      ],
+      "evidence_needs": [
+        "cholestatic_laboratory_panel",
+        "hepatobiliary_imaging_pathway",
+        "constitutional_weight_loss_history",
+        "gi_or_oncology_followup_pathway"
+      ],
+      "challenge_queries": [
+        "obstructive jaundice pancreatic malignancy review",
+        "painless jaundice dark urine pale stools malignancy differential",
+        "pancreaticobiliary obstruction imaging workup review"
+      ],
+      "immediate_actions": [
+        "hepatobiliary_imaging_pathway",
+        "expedited_gastroenterology_or_oncology_review",
+        "cholestatic_laboratory_panel"
+      ]
+    },
+    {
+      "id": "anaphylaxis",
+      "label": "anaphylaxis",
+      "summary": "Acute systemic allergic reaction with airway compromise, distributive physiology, and rapid progression risk.",
+      "cue_lexicon": [
+        "peanut exposure",
+        "lip swelling",
+        "hives",
+        "hoarse voice",
+        "shortness of breath",
+        "faint breath sounds",
+        "allergic trigger",
+        "hypotension"
+      ],
+      "evidence_needs": [
+        "airway_assessment",
+        "objective_vitals",
+        "anaphylaxis_treatment_pathway",
+        "trigger_timeline"
+      ],
+      "challenge_queries": [
+        "anaphylaxis airway compromise hypotension emergency treatment review",
+        "anaphylaxis versus severe asthma bedside differentiation",
+        "anaphylaxis epinephrine delayed treatment harm review"
+      ],
+      "immediate_actions": [
+        "intramuscular_epinephrine",
+        "airway_and_oxygen_support",
+        "hemodynamic_stabilization"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "isolated_bronchospasm_without_epinephrine"
+    },
+    {
+      "id": "ectopic_pregnancy",
+      "label": "ectopic_pregnancy",
+      "summary": "Pregnancy-related abdominal emergency with pelvic pain, bleeding, syncope, and hemorrhagic shock risk.",
+      "cue_lexicon": [
+        "missed period",
+        "vaginal bleeding",
+        "positive at home",
+        "positive pregnancy test",
+        "lower abdominal pain",
+        "lower belly cramps stomach bug like",
+        "pelvic pain",
+        "syncope",
+        "fainted at work",
+        "lightheaded weakness",
+        "hemodynamic instability",
+        "hypotension tachycardia young female",
+        "reproductive age female abdominal pain shock"
+      ],
+      "evidence_needs": [
+        "pregnancy_confirmation",
+        "pelvic_ultrasound",
+        "hemodynamic_assessment",
+        "ob_gyn_emergency_pathway"
+      ],
+      "challenge_queries": [
+        "ectopic pregnancy hypotension pelvic pain emergency review",
+        "ruptured ectopic pregnancy bedside clues review",
+        "pregnancy positive abdominal pain syncope emergency differential"
+      ],
+      "immediate_actions": [
+        "ob_gyn_emergency_consult",
+        "pelvic_ultrasound",
+        "resuscitation_and_blood_preparation"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "non_obstetric_syncope_or_benign_abdominal_pain"
+    },
+    {
+      "id": "ruptured_ectopic_pregnancy",
+      "label": "ruptured_ectopic_pregnancy",
+      "summary": "Hemorrhagic gynecologic emergency with delayed menses, pelvic pain, orthostasis, and referred shoulder pain.",
+      "cue_lexicon": [
+        "missed period",
+        "delayed menses",
+        "amenorrhea",
+        "pelvic pain",
+        "lower abdominal cramps",
+        "mild cramping lower belly",
+        "right shoulder tip pain",
+        "shoulder tip aching",
+        "right shoulder aching no injury",
+        "shoulder pain no local tenderness",
+        "referred shoulder pain diaphragm",
+        "Kehr sign",
+        "orthostatic dizziness",
+        "syncope fainting at work",
+        "sudden faint lightheaded",
+        "visual blackout on standing",
+        "pale diaphoretic shock",
+        "intraperitoneal bleeding",
+        "hemoperitoneum",
+        "reproductive age female shock"
+      ],
+      "evidence_needs": [
+        "pregnancy_confirmation",
+        "hemodynamic_assessment",
+        "pelvic_ultrasound",
+        "ob_gyn_emergency_pathway"
+      ],
+      "challenge_queries": [
+        "ruptured ectopic pregnancy shoulder tip pain orthostasis review",
+        "delayed menses pelvic pain hemodynamic instability emergency differential",
+        "ruptured ectopic pregnancy bedside clues hemorrhagic shock review"
+      ],
+      "immediate_actions": [
+        "ob_gyn_emergency_consult",
+        "resuscitation_and_blood_preparation",
+        "pelvic_ultrasound"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "appendicitis_or_perforated_viscus"
+    },
+    {
+      "id": "ureteral_calcium_stone",
+      "label": "ureteral_calcium_stone",
+      "summary": "Acute ureteral obstruction pattern with flank-to-groin colic, restlessness, and hematuria.",
+      "cue_lexicon": [
+        "flank pain",
+        "radiates to groin",
+        "cannot stay still",
+        "colicky pain",
+        "tea colored urine",
+        "hematuria",
+        "renal colic",
+        "restlessness"
+      ],
+      "evidence_needs": [
+        "urinalysis",
+        "renal_function_panel",
+        "stone_imaging_pathway",
+        "objective_vitals"
+      ],
+      "challenge_queries": [
+        "renal colic hematuria flank to groin pain review",
+        "ureteral stone restless patient hematuria emergency differential",
+        "infected obstructing stone red flags review"
+      ],
+      "immediate_actions": [
+        "analgesia_and_hydration_review",
+        "urinalysis_and_renal_function",
+        "stone_imaging_pathway"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": false,
+      "dangerous_if_treated_as": "nonspecific_back_pain"
+    },
+    {
+      "id": "benign_paroxysmal_positional_vertigo",
+      "label": "benign_paroxysmal_positional_vertigo",
+      "summary": "Brief position-triggered peripheral vertigo with head movement dependence and rapid resolution at rest.",
+      "cue_lexicon": [
+        "turning in bed",
+        "seconds long vertigo",
+        "room spinning",
+        "head movement trigger",
+        "looking up",
+        "positional vertigo",
+        "brief episodes",
+        "settles when still"
+      ],
+      "evidence_needs": [
+        "symptom_timeline",
+        "positional_trigger_confirmation",
+        "targeted_neurologic_exam",
+        "objective_vitals"
+      ],
+      "challenge_queries": [
+        "brief positional vertigo turning in bed review",
+        "bppv versus central vertigo bedside differentiation",
+        "seconds long head movement triggered vertigo differential"
+      ],
+      "immediate_actions": [
+        "targeted_positional_exam",
+        "canalith_repositioning_if_appropriate",
+        "exclude_central_red_flags"
+      ]
+    },
+    {
+      "id": "myasthenia_gravis",
+      "label": "myasthenia_gravis",
+      "summary": "Fatigable neuromuscular junction disorder with fluctuating ptosis, bulbar fatigue, and evening worsening.",
+      "cue_lexicon": [
+        "morning better evening worse",
+        "eyelids droop",
+        "fatigable weakness",
+        "jaw tires when chewing",
+        "dysphagia",
+        "nasal speech",
+        "bulbar fatigue",
+        "fluctuating ptosis"
+      ],
+      "evidence_needs": [
+        "focused_neuromuscular_exam",
+        "respiratory_weakness_screen",
+        "myasthenia_confirmatory_testing",
+        "bulbar_safety_assessment"
+      ],
+      "challenge_queries": [
+        "fatigable ptosis dysphagia jaw fatigue myasthenia gravis review",
+        "fluctuating oculobulbar weakness evening worsening differential",
+        "myasthenia gravis bulbar symptoms emergency review"
+      ],
+      "immediate_actions": [
+        "respiratory_weakness_screen",
+        "targeted_neuromuscular_consult",
+        "bulbar_and_swallow_safety_assessment"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "angioedema_or_primary_airway_edema"
+    },
+    {
+      "id": "guillain_barre_syndrome",
+      "label": "guillain_barre_syndrome",
+      "summary": "Postinfectious ascending peripheral neuropathy with progressive symmetric weakness and respiratory risk.",
+      "cue_lexicon": [
+        "ascending weakness",
+        "recent diarrhea",
+        "tingling in feet",
+        "progressive leg weakness",
+        "cannot climb stairs",
+        "postinfectious neuropathy",
+        "symmetric progression",
+        "areflexia risk"
+      ],
+      "evidence_needs": [
+        "focused_neurologic_exam",
+        "respiratory_strength_assessment",
+        "gbs_diagnostic_pathway",
+        "autonomic_monitoring"
+      ],
+      "challenge_queries": [
+        "post diarrheal ascending weakness guillain barre syndrome review",
+        "ascending paresthesia leg weakness recent diarrhea differential",
+        "gbs respiratory failure risk emergency review"
+      ],
+      "immediate_actions": [
+        "respiratory_strength_assessment",
+        "neurology_consult",
+        "autonomic_and_respiratory_monitoring"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "transverse_myelitis_or_functional_symptoms"
+    },
+    {
+      "id": "botulism",
+      "label": "botulism",
+      "summary": "Foodborne descending neuroparalytic syndrome with cranial neuropathies, dysphagia, dry mouth, and progressive weakness.",
+      "cue_lexicon": [
+        "home canned food",
+        "double vision",
+        "dry mouth",
+        "dysphagia",
+        "hoarseness",
+        "descending weakness",
+        "photophobia",
+        "cannot raise arms"
+      ],
+      "evidence_needs": [
+        "bulbar_and_respiratory_assessment",
+        "botulism_exposure_confirmation",
+        "toxin_pathway_review",
+        "objective_vitals"
+      ],
+      "challenge_queries": [
+        "home canned food diplopia dysphagia botulism review",
+        "descending paralysis dry mouth foodborne neurotoxin differential",
+        "botulism respiratory failure emergency review"
+      ],
+      "immediate_actions": [
+        "respiratory_monitoring",
+        "urgent_toxicology_or_id_consult",
+        "botulism_antitoxin_pathway_review"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "organophosphate_poisoning"
+    },
+    {
+      "id": "carbon_monoxide_poisoning",
+      "label": "carbon_monoxide_poisoning",
+      "summary": "Combustion-related household toxic exposure causing simultaneous headache, dizziness, nausea, and multi-subject illness.",
+      "cue_lexicon": [
+        "heater started",
+        "household cluster",
+        "spouse also sick",
+        "pet also sick",
+        "headache",
+        "dizziness",
+        "nausea",
+        "combustion exposure"
+      ],
+      "evidence_needs": [
+        "co_exposure_assessment",
+        "oxygenation_and_hemodynamic_assessment",
+        "carbon_monoxide_confirmation",
+        "environmental_safety_action"
+      ],
+      "challenge_queries": [
+        "household headache dizziness pet sick carbon monoxide review",
+        "heater exposure simultaneous nausea dizziness family differential",
+        "carbon monoxide poisoning normal pulse oximetry trap review"
+      ],
+      "immediate_actions": [
+        "remove_from_exposure",
+        "high_flow_oxygen_review",
+        "environmental_emergency_pathway"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "migraine_or_food_poisoning"
+    },
+    {
+      "id": "ovarian_torsion",
+      "label": "ovarian_torsion",
+      "summary": "Intermittent adnexal ischemic emergency with sudden pelvic pain, vomiting, and torsion-detorsion recurrence.",
+      "cue_lexicon": [
+        "sudden pelvic pain",
+        "exercise trigger",
+        "vomiting from pain",
+        "pain briefly resolved",
+        "pain returned worse",
+        "torsion detorsion",
+        "lower groin pain",
+        "adnexal ischemia"
+      ],
+      "evidence_needs": [
+        "pelvic_ultrasound",
+        "gynecology_emergency_review",
+        "hemodynamic_assessment",
+        "pregnancy_exclusion"
+      ],
+      "challenge_queries": [
+        "ovarian torsion sudden pain vomiting intermittent recurrence review",
+        "torsion detorsion pelvic pain exercise trigger differential",
+        "ovarian torsion ectopic pregnancy bedside differentiation"
+      ],
+      "immediate_actions": [
+        "gynecology_emergency_consult",
+        "pelvic_ultrasound",
+        "analgesia_and_surgical_readiness"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "ruptured_ectopic_pregnancy_or_diverticulitis"
+    },
+    {
+      "id": "pheochromocytoma",
+      "label": "pheochromocytoma",
+      "summary": "Paroxysmal catecholamine excess syndrome with abrupt spells of palpitations, diaphoresis, headache, and severe hypertension.",
+      "cue_lexicon": [
+        "episodic palpitations",
+        "profuse sweating",
+        "sudden headache",
+        "abrupt termination",
+        "hypertensive spells",
+        "220 120",
+        "paroxysmal symptoms",
+        "catecholamine surge"
+      ],
+      "evidence_needs": [
+        "spell_timeline",
+        "hemodynamic_assessment",
+        "secondary_hypertension_pathway",
+        "adrenergic_trigger_review"
+      ],
+      "challenge_queries": [
+        "episodic palpitations sweating headache pheochromocytoma review",
+        "paroxysmal hypertension abrupt termination spells differential",
+        "pheochromocytoma versus panic attack bedside clues review"
+      ],
+      "immediate_actions": [
+        "hemodynamic_assessment",
+        "secondary_hypertension_workup",
+        "avoid_anchoring_on_panic_or_isolated_svt"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "panic_attack_or_generic_hypertensive_emergency"
+    },
+    {
+      "id": "thyrotoxic_periodic_paralysis",
+      "label": "thyrotoxic_periodic_paralysis",
+      "summary": "Hyperthyroid transcellular potassium shift syndrome causing episodic flaccid weakness after carbohydrate load or rest.",
+      "cue_lexicon": [
+        "heavy carbohydrate meal",
+        "woke up weak",
+        "flaccid paralysis",
+        "tachycardia",
+        "weight loss despite eating",
+        "sweating",
+        "hyperthyroid symptoms",
+        "hypokalemic paralysis"
+      ],
+      "evidence_needs": [
+        "electrolyte_panel",
+        "ecg",
+        "thyroid_panel",
+        "hemodynamic_assessment"
+      ],
+      "challenge_queries": [
+        "thyrotoxic periodic paralysis carbohydrate load tachycardia review",
+        "hypokalemic paralysis weight loss sweating differential",
+        "thyrotoxic periodic paralysis emergency management review"
+      ],
+      "immediate_actions": [
+        "electrolyte_assessment",
+        "cardiac_monitoring",
+        "thyrotoxic_state_review"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "spinal_cord_or_primary_neurologic_paralysis"
+    },
+    {
+      "id": "subarachnoid_hemorrhage",
+      "label": "subarachnoid_hemorrhage",
+      "summary": "Aneurysmal or spontaneous subarachnoid hemorrhage pattern with thunderclap headache, collapse, and meningeal irritation.",
+      "cue_lexicon": [
+        "worst headache of life",
+        "thunderclap headache",
+        "suddenly during exercise",
+        "neck pain",
+        "photophobic",
+        "briefly collapsed",
+        "vomiting",
+        "meningismus"
+      ],
+      "evidence_needs": [
+        "ct_head",
+        "neurosurgical_pathway",
+        "lumbar_puncture_if_initial_ct_negative",
+        "blood_pressure_and_neuro_monitoring"
+      ],
+      "challenge_queries": [
+        "subarachnoid hemorrhage thunderclap headache review",
+        "worst headache of life collapse meningismus emergency differential",
+        "subarachnoid hemorrhage imaging workup review"
+      ],
+      "immediate_actions": [
+        "urgent_neuroimaging",
+        "neurosurgical_escalation",
+        "blood_pressure_and_airway_monitoring"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "benign_headache_or_self_limited_gastroenteritis"
+    },
+    {
+      "id": "spinal_epidural_abscess",
+      "label": "spinal_epidural_abscess",
+      "summary": "Spinal infectious compression syndrome with back pain, fever, weakness, and urinary retention requiring urgent MRI pathway.",
+      "cue_lexicon": [
+        "midline back pain",
+        "recent skin infection",
+        "leg weakness",
+        "trouble urinating",
+        "urinary retention",
+        "fever",
+        "diabetes",
+        "spinal infection"
+      ],
+      "evidence_needs": [
+        "spine_mri",
+        "neurosurgical_pathway",
+        "blood_cultures_and_inflammatory_markers",
+        "broad_spectrum_antibiotics_pathway"
+      ],
+      "challenge_queries": [
+        "spinal epidural abscess urinary retention leg weakness review",
+        "back pain fever neurologic deficit urgent mri differential",
+        "spinal epidural abscess emergency treatment review"
+      ],
+      "immediate_actions": [
+        "spine_mri",
+        "neurosurgical_consult",
+        "broad_spectrum_antibiotics_after_cultures_if_appropriate"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "simple_mechanical_back_pain_or_viral_illness"
+    },
+    {
+      "id": "giant_cell_arteritis",
+      "label": "giant_cell_arteritis",
+      "summary": "Cranial vasculitic syndrome threatening vision with temporal pain, jaw claudication, and ischemic visual symptoms.",
+      "cue_lexicon": [
+        "temporal headache",
+        "scalp tenderness",
+        "jaw pain while chewing",
+        "jaw claudication",
+        "blurry vision",
+        "brief episodes of blurry vision",
+        "unilateral temporal",
+        "older adult"
+      ],
+      "evidence_needs": [
+        "esr_crp",
+        "ophthalmology_or_rheumatology_pathway",
+        "temporal_artery_evaluation",
+        "steroid_first_safety_review"
+      ],
+      "challenge_queries": [
+        "giant cell arteritis visual symptoms temporal headache review",
+        "jaw claudication transient visual loss emergency differential",
+        "giant cell arteritis immediate steroids review"
+      ],
+      "immediate_actions": [
+        "start_steroids_if_clinically_appropriate",
+        "urgent_vision_protection_pathway",
+        "esr_crp_and_temporal_artery_workup"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "benign_headache_or_nonspecific_neurologic_process"
+    },
+    {
+      "id": "appendicitis",
+      "label": "appendicitis",
+      "summary": "Evolving focal surgical abdomen with migratory right lower quadrant pain, anorexia, and peritoneal irritation.",
+      "cue_lexicon": [
+        "moving to the right lower abdomen",
+        "right lower abdomen",
+        "loss of appetite",
+        "worsens with walking",
+        "pain starting near the belly button",
+        "nausea",
+        "right lower quadrant",
+        "surgical abdomen"
+      ],
+      "evidence_needs": [
+        "serial_abdominal_exam",
+        "appendicitis_imaging_pathway",
+        "surgical_review",
+        "peritoneal_sign_assessment"
+      ],
+      "challenge_queries": [
+        "appendicitis migratory right lower quadrant pain review",
+        "right lower quadrant pain nausea anorexia surgical differential",
+        "appendicitis early presentation emergency review"
+      ],
+      "immediate_actions": [
+        "surgical_evaluation",
+        "appendicitis_imaging_pathway",
+        "serial_abdominal_assessment"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "nonspecific_respiratory_or_cardiopulmonary_process"
+    },
+    {
+      "id": "hyperkalemia",
+      "label": "hyperkalemia",
+      "summary": "Potentially lethal electrolyte emergency with bradyarrhythmia, peaked T waves, and cardiorenal instability.",
+      "cue_lexicon": [
+        "peaked t waves",
+        "kidney disease",
+        "pulse 38",
+        "lightheaded",
+        "near fainting",
+        "new blood pressure medication",
+        "weakness",
+        "bradyarrhythmia"
+      ],
+      "evidence_needs": [
+        "repeat_ecg",
+        "serum_potassium_and_renal_panel",
+        "hyperkalemia_stabilization_pathway",
+        "medication_review"
+      ],
+      "challenge_queries": [
+        "hyperkalemia bradycardia peaked t waves emergency review",
+        "bradyarrhythmia renal failure electrolyte differential",
+        "hyperkalemia calcium insulin temporizing treatment review"
+      ],
+      "immediate_actions": [
+        "cardiac_membrane_stabilization_if_indicated",
+        "urgent_potassium_measurement_and_renal_review",
+        "repeat_ecg_and_monitoring"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "routine_acute_coronary_or_nitrate_pathway"
+    },
+    {
+      "id": "serotonin_syndrome",
+      "label": "serotonin_syndrome",
+      "summary": "Hyper-serotonergic toxidrome with autonomic instability, neuromuscular hyperactivity, and mental status change after serotonergic exposure.",
+      "cue_lexicon": [
+        "clonus",
+        "hyperreflexia",
+        "agitation",
+        "diaphoresis",
+        "tremor",
+        "hyperthermia",
+        "serotonergic medication",
+        "drug interaction"
+      ],
+      "evidence_needs": [
+        "medication_and_exposure_timeline",
+        "neuromuscular_exam_for_clonus_and_hyperreflexia",
+        "autonomic_instability_panel",
+        "toxicology_pathway_review"
+      ],
+      "challenge_queries": [
+        "serotonin syndrome diagnostic criteria clonus hyperreflexia review",
+        "serotonergic drug interaction hyperthermia agitation differential",
+        "serotonin toxicity emergency management review"
+      ],
+      "immediate_actions": [
+        "stop_serotonergic_agents",
+        "supportive_cooling_and_autonomic_monitoring",
+        "toxicology_consult_pathway"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "isolated_functional_or_primary_psychiatric_process",
+      "trigger_requirements": [
+        "serotonergic medication",
+        "ssri",
+        "snri",
+        "maoi",
+        "dextromethorphan",
+        "linezolid",
+        "tramadol",
+        "mdma"
+      ],
+      "trigger_exclusions": [
+        "volatile anesthetic",
+        "succinylcholine only"
+      ]
+    },
+    {
+      "id": "neuroleptic_malignant_syndrome",
+      "label": "neuroleptic_malignant_syndrome",
+      "summary": "Dopamine-blockade toxidrome with severe rigidity, fever, autonomic dysfunction, and encephalopathy.",
+      "cue_lexicon": [
+        "lead pipe rigidity",
+        "fever",
+        "altered mental status",
+        "autonomic instability",
+        "elevated ck",
+        "recent antipsychotic"
+      ],
+      "evidence_needs": [
+        "dopamine_blocker_or_withdrawal_timeline",
+        "ck_and_rhabdomyolysis_labs",
+        "autonomic_instability_monitoring",
+        "critical_care_supportive_plan"
+      ],
+      "challenge_queries": [
+        "neuroleptic malignant syndrome rigidity fever antipsychotic review",
+        "nms versus serotonin syndrome differential review",
+        "nms emergency treatment pathway"
+      ],
+      "immediate_actions": [
+        "stop_offending_dopamine_blocker",
+        "aggressive_supportive_care",
+        "critical_care_escalation_if_instability"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "simple_infectious_fever_or_non_toxic_neurologic_process",
+      "trigger_requirements": [
+        "antipsychotic",
+        "neuroleptic",
+        "dopamine antagonist",
+        "dopamine withdrawal"
+      ],
+      "trigger_exclusions": [
+        "perioperative volatile anesthetic exposure"
+      ]
+    },
+    {
+      "id": "malignant_hyperthermia",
+      "label": "malignant_hyperthermia",
+      "summary": "Peri-anesthetic hypermetabolic crisis with hypercarbia, rigidity, hyperthermia, and rapid decompensation.",
+      "cue_lexicon": [
+        "perioperative crisis",
+        "rapid hyperthermia",
+        "muscle rigidity",
+        "rising end tidal co2",
+        "metabolic acidosis",
+        "general anesthesia"
+      ],
+      "evidence_needs": [
+        "recent_anesthesia_exposure_timeline",
+        "co2_and_acid_base_trend",
+        "ck_and_hyperkalemia_assessment",
+        "anesthesia_critical_event_review"
+      ],
+      "challenge_queries": [
+        "malignant hyperthermia perioperative diagnosis review",
+        "volatile anesthetic succinylcholine trigger emergency management",
+        "malignant hyperthermia dantrolene pathway review"
+      ],
+      "immediate_actions": [
+        "stop_triggering_anesthetic_agents",
+        "dantrolene_pathway_activation",
+        "active_cooling_and_critical_monitoring"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "non_toxic_febrile_or_psychiatric_presentation",
+      "trigger_requirements": [
+        "general anesthesia",
+        "volatile anesthetic",
+        "succinylcholine",
+        "perioperative"
+      ],
+      "trigger_exclusions": [
+        "no anesthetic exposure",
+        "outpatient spontaneous syndrome without procedural trigger"
+      ]
+    },
+    {
+      "id": "toxic_or_exposure_process",
+      "label": "toxic_or_exposure_process",
+      "summary": "Exposure, ingestion, envenomation, or toxicologic syndrome family.",
+      "cue_lexicon": [
+        "bite",
+        "exposure",
+        "poison",
+        "ingestion",
+        "drug",
+        "pill",
+        "chemical",
+        "toxin"
+      ],
+      "evidence_needs": [
+        "exposure_timeline",
+        "substance_identification",
+        "poison_center_style_risk_review",
+        "objective_vitals"
+      ],
+      "challenge_queries": [
+        "toxic ingestion red flags",
+        "animal bite infectious risk",
+        "exposure related altered mental status"
+      ],
+      "immediate_actions": [
+        "clarify_exposure",
+        "urgent_toxicology_review",
+        "preserve_substance_history"
+      ]
+    },
+    {
+      "id": "undifferentiated_high_variance_process",
+      "label": "undifferentiated_high_variance_process",
+      "summary": "Fallback syndromic state when signal is sparse or conflicting.",
+      "cue_lexicon": [],
+      "evidence_needs": [
+        "objective_vitals",
+        "focused_history",
+        "basic_exam"
+      ],
+      "challenge_queries": [
+        "acute undifferentiated patient red flags",
+        "initial broad emergency workup"
+      ],
+      "immediate_actions": [
+        "collect_more_data",
+        "avoid_overconfident_closure"
+      ]
+    },
+    {
+      "id": "dengue_hemorrhagic_fever",
+      "label": "dengue_hemorrhagic_fever",
+      "summary": "Severe dengue with plasma leakage, hemorrhagic manifestations, and thrombocytopenia following Aedes mosquito bite in endemic area.",
+      "cue_lexicon": [
+        "dengue hemorrhagic fever",
+        "dengue shock syndrome",
+        "breakbone fever",
+        "retro-orbital headache",
+        "positive tourniquet test",
+        "petechiae",
+        "thrombocytopenia",
+        "plasma leakage",
+        "gingival bleeding",
+        "hepatomegaly",
+        "dengue",
+        "NS1 antigen",
+        "Bali",
+        "Southeast Asia travel"
+      ],
+      "evidence_needs": [
+        "ns1_antigen_and_igm_igg_dengue_serology",
+        "platelet_count_and_coagulation_profile",
+        "hematocrit_serial_monitoring",
+        "liver_function_tests",
+        "objective_vitals_hemodynamic_assessment"
+      ],
+      "challenge_queries": [
+        "dengue hemorrhagic fever NSAID ibuprofen aspirin contraindication bleeding risk",
+        "dengue shock syndrome fluid resuscitation crystalloid protocol WHO",
+        "dengue tourniquet test positive diagnosis criteria"
+      ],
+      "immediate_actions": [
+        "stop_nsaids_aspirin_and_all_antiplatelet_agents_immediately",
+        "iv_isotonic_fluid_resuscitation_if_shock",
+        "urgent_platelet_count_hematocrit_coagulation_panel",
+        "hospital_admission_for_monitoring"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "viral_flu_nsaid_protocol",
+      "unsafe_interventions": [
+        "ibuprofen",
+        "nsaid",
+        "aspirin",
+        "naproxen",
+        "diclofenac",
+        "anticoagulant",
+        "antiplatelet"
+      ],
+      "trigger_requirements": [
+        "travel_endemic_area",
+        "fever_hemorrhagic_manifestations"
+      ]
+    },
+    {
+      "id": "leptospirosis",
+      "label": "leptospirosis",
+      "summary": "Zoonotic spirochete infection after exposure to contaminated water or soil in tropical endemic areas, presenting with fever, myalgia, and multi-organ involvement.",
+      "cue_lexicon": [
+        "leptospirosis",
+        "Weil disease",
+        "spirochete",
+        "rice field exposure",
+        "flooding",
+        "animal contact",
+        "jaundice fever",
+        "conjunctival suffusion",
+        "severe myalgia calf"
+      ],
+      "evidence_needs": [
+        "leptospira_igm_serology_mat",
+        "renal_function_tests",
+        "liver_function_tests",
+        "urine_microscopy",
+        "blood_culture"
+      ],
+      "challenge_queries": [
+        "leptospirosis Bali travel hemorrhagic fever differential dengue",
+        "leptospirosis penicillin doxycycline treatment severe"
+      ],
+      "immediate_actions": [
+        "start_doxycycline_or_penicillin_early",
+        "monitor_renal_and_hepatic_function",
+        "fluid_balance_management"
+      ],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "viral_fever_supportive_only",
+      "unsafe_interventions": [
+        "nephrotoxic_agents",
+        "nsaid"
+      ]
+    },
+    {
+      "id": "inferior_myocardial_infarction_rv",
+      "label": "inferior_myocardial_infarction_rv",
+      "summary": "Alias for inferior MI with RV involvement — routes to the primary profile.",
+      "cue_lexicon": ["inferior mi rv", "right ventricular infarction", "inferior stemi rv"],
+      "evidence_needs": ["right_sided_ecg_v4r", "hemodynamic_assessment"],
+      "challenge_queries": [],
+      "immediate_actions": ["avoid_nitroglycerin_and_morphine"],
+      "must_not_miss": true,
+      "dangerous_if_missed": true,
+      "dangerous_if_treated_as": "routine_acs_nitrate_protocol",
+      "unsafe_interventions": ["nitroglycerin", "morphine"]
+    }
+  ]
+}

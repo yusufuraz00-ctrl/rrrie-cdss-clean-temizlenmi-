@@ -1,0 +1,32 @@
+{
+  "schema_version": "family-specialist-map-v1",
+  "note": "Maps Level-0 family id → ordered list of specialist worker profiles to run at L1/L2. Profiles with 'specialist:' prefix are consumed by llm_bridge induce_diagnoses as domain experts; bare names match the _FOCUS_PROFILE_PROMPTS dict. Panel is deliberately small (3-5) to keep fan-out under the VRAM semaphore; the generic 'general' + 'sherlock' core runs on every case unless overridden.",
+  "default_panel": ["general", "common_case", "sherlock"],
+  "families": {
+    "cardiovascular_syndrome":        ["specialist:CARDIOLOGY", "specialist:VASCULAR_MEDICINE", "red_team_fatal", "sherlock"],
+    "pulmonary_syndrome":             ["specialist:PULMONOLOGY", "specialist:CRITICAL_CARE", "red_team_fatal", "sherlock"],
+    "neurologic_syndrome":            ["specialist:NEUROLOGY", "specialist:STROKE_MEDICINE", "red_team_fatal", "sherlock"],
+    "infectious_syndrome":            ["specialist:INFECTIOUS_DISEASE", "specialist:TROPICAL_MEDICINE", "zebra_hunter", "sherlock"],
+    "gastrointestinal_syndrome":      ["specialist:GASTROENTEROLOGY", "specialist:HEPATOLOGY", "common_case", "sherlock"],
+    "renal_genitourinary_syndrome":   ["specialist:NEPHROLOGY", "specialist:UROLOGY", "common_case", "sherlock"],
+    "metabolic_endocrine_syndrome":   ["specialist:ENDOCRINOLOGY", "specialist:METABOLIC_MEDICINE", "zebra_hunter", "sherlock"],
+    "hematologic_syndrome":           ["specialist:HEMATOLOGY", "specialist:TRANSFUSION_MEDICINE", "zebra_hunter", "sherlock"],
+    "oncologic_syndrome":             ["specialist:ONCOLOGY", "specialist:HEMATOLOGY", "red_team_fatal", "sherlock"],
+    "rheumatologic_syndrome":         ["specialist:RHEUMATOLOGY", "specialist:IMMUNOLOGY", "zebra_hunter", "sherlock"],
+    "dermatologic_syndrome":          ["specialist:DERMATOLOGY", "specialist:ALLERGY", "common_case", "sherlock"],
+    "musculoskeletal_syndrome":       ["specialist:ORTHOPEDICS", "specialist:SPORTS_MEDICINE", "common_case", "sherlock"],
+    "psychiatric_syndrome":           ["specialist:PSYCHIATRY", "specialist:ADDICTION_MEDICINE", "common_case", "sherlock"],
+    "toxicologic_syndrome":           ["specialist:MEDICAL_TOXICOLOGY", "specialist:PHARMACOLOGY", "red_team_fatal", "sherlock"],
+    "trauma_syndrome":                ["specialist:TRAUMA_SURGERY", "specialist:EMERGENCY_MEDICINE", "red_team_fatal", "sherlock"],
+    "obstetric_gynecologic_syndrome": ["specialist:OBSTETRICS", "specialist:GYNECOLOGY", "red_team_fatal", "sherlock"],
+    "ophthalmologic_syndrome":        ["specialist:OPHTHALMOLOGY", "red_team_fatal", "sherlock"],
+    "otolaryngologic_syndrome":       ["specialist:OTOLARYNGOLOGY", "common_case", "sherlock"],
+    "allergic_immunologic_syndrome":  ["specialist:ALLERGY", "specialist:IMMUNOLOGY", "red_team_fatal", "sherlock"],
+    "pediatric_syndrome":             ["specialist:PEDIATRICS", "specialist:NEONATOLOGY", "zebra_hunter", "sherlock"],
+    "geriatric_syndrome":             ["specialist:GERIATRICS", "common_case", "sherlock"],
+    "nutritional_syndrome":           ["specialist:NUTRITION", "specialist:METABOLIC_MEDICINE", "zebra_hunter", "sherlock"],
+    "environmental_exposure_syndrome": ["specialist:ENVIRONMENTAL_MEDICINE", "specialist:WILDERNESS_MEDICINE", "red_team_fatal", "sherlock"],
+    "genetic_syndrome":               ["specialist:MEDICAL_GENETICS", "specialist:METABOLIC_MEDICINE", "zebra_hunter", "sherlock"],
+    "iatrogenic_syndrome":            ["specialist:PHARMACOLOGY", "specialist:INTERNAL_MEDICINE", "red_team_fatal", "sherlock"]
+  }
+}

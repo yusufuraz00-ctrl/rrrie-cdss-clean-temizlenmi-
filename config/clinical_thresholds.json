@@ -1,0 +1,224 @@
+{
+  "_comment": "Centralized clinical thresholds. Single source of truth. Each entry includes value, source citation, and last_reviewed date. The system falls back to in-code defaults if this file is missing or malformed, so removing this file does not break the pipeline.",
+  "_schema_version": 1,
+  "vitals": {
+    "spo2_critical_lt": {
+      "value": 92,
+      "unit": "percent",
+      "source": "Surviving Sepsis Campaign 2021; AHA ACLS guidance for hypoxemia",
+      "last_reviewed": "2026-05-01"
+    },
+    "sbp_shock_lt": {
+      "value": 90,
+      "unit": "mmHg",
+      "source": "Standard adult shock physiology threshold (SCCM, 2021)",
+      "last_reviewed": "2026-05-01"
+    },
+    "sbp_borderline_lt_eq": {
+      "value": 100,
+      "unit": "mmHg",
+      "source": "AHA pre-shock borderline range",
+      "last_reviewed": "2026-05-01"
+    },
+    "sbp_severe_htn_gte": {
+      "value": 180,
+      "unit": "mmHg",
+      "source": "ACC/AHA 2017 hypertensive crisis threshold",
+      "last_reviewed": "2026-05-01"
+    },
+    "hr_marked_tachy_gt": {
+      "value": 130,
+      "unit": "bpm",
+      "source": "qSOFA/SIRS adjacent marked-tachycardia threshold",
+      "last_reviewed": "2026-05-01"
+    },
+    "hr_tachy_gte": {
+      "value": 100,
+      "unit": "bpm",
+      "source": "Standard adult tachycardia definition",
+      "last_reviewed": "2026-05-01"
+    },
+    "rr_marked_tachypnea_gt": {
+      "value": 30,
+      "unit": "breaths/min",
+      "source": "Severe respiratory distress threshold (NEWS2)",
+      "last_reviewed": "2026-05-01"
+    },
+    "rr_tachypnea_gte": {
+      "value": 22,
+      "unit": "breaths/min",
+      "source": "qSOFA respiratory criterion (Sepsis-3, 2016)",
+      "last_reviewed": "2026-05-01"
+    },
+    "temp_hyperpyrexia_gte": {
+      "value": 40.0,
+      "unit": "celsius",
+      "source": "WHO hyperpyrexia threshold",
+      "last_reviewed": "2026-05-01"
+    }
+  },
+  "shock_index": {
+    "critical_gte": {
+      "value": 1.2,
+      "source": "Cannon et al., shock-index for hemorrhagic/septic deterioration",
+      "last_reviewed": "2026-05-01"
+    },
+    "high_gte": {
+      "value": 0.9,
+      "source": "Standard pre-shock SI threshold",
+      "last_reviewed": "2026-05-01"
+    }
+  },
+  "fusion": {
+    "rrf_k": {
+      "value": 60,
+      "source": "Cormack 2009 RRF literature default",
+      "last_reviewed": "2026-05-01"
+    },
+    "alpha_rrf": {
+      "value": 0.4,
+      "source": "Internal calibration; convex mixture default",
+      "last_reviewed": "2026-05-01"
+    },
+    "beta_twb": {
+      "value": 0.4,
+      "source": "Internal calibration; convex mixture default",
+      "last_reviewed": "2026-05-01"
+    },
+    "gamma_likelihood": {
+      "value": 0.2,
+      "source": "Internal calibration; convex mixture default",
+      "last_reviewed": "2026-05-01"
+    }
+  },
+  "confirmation_planner": {
+    "close_ranking_margin_lt": {
+      "value": 0.20,
+      "source": "Internal heuristic; below this margin top candidates are not safely separable",
+      "last_reviewed": "2026-05-01"
+    },
+    "high_priority_score": {
+      "value": 0.92,
+      "source": "Internal scaling for EvidenceNeed prioritization",
+      "last_reviewed": "2026-05-01"
+    },
+    "default_priority_score": {
+      "value": 0.72,
+      "source": "Internal scaling for EvidenceNeed prioritization",
+      "last_reviewed": "2026-05-01"
+    },
+    "high_information_gain": {
+      "value": 0.82,
+      "source": "Internal scaling",
+      "last_reviewed": "2026-05-01"
+    },
+    "baseline_information_gain": {
+      "value": 0.65,
+      "source": "Internal scaling",
+      "last_reviewed": "2026-05-01"
+    }
+  },
+  "retrieval_reranker": {
+    "specificity_bonus": {
+      "value": 0.08,
+      "source": "Internal heuristic for candidate-aligned evidence",
+      "last_reviewed": "2026-05-01"
+    },
+    "query_overlap_weight": {
+      "value": 0.03,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "summary_overlap_weight": {
+      "value": 0.01,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "novelty_specificity_weight": {
+      "value": 0.45,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "novelty_alignment_weight": {
+      "value": 0.35,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "novelty_diversity_weight": {
+      "value": 0.20,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    }
+  },
+  "adaptive_depth": {
+    "skip_top1_score_min": {
+      "value": 0.70,
+      "source": "Internal heuristic for confident-case fast path",
+      "last_reviewed": "2026-05-01"
+    },
+    "skip_margin_min": {
+      "value": 0.25,
+      "source": "Internal heuristic; margin above which deep simulation is low-yield",
+      "last_reviewed": "2026-05-01"
+    },
+    "skip_grounding_pass_min": {
+      "value": 0.90,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "skip_evidence_coverage_min": {
+      "value": 0.60,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "abstain_margin_max": {
+      "value": 0.10,
+      "source": "Internal heuristic; below this the system should abstain rather than force a top-1",
+      "last_reviewed": "2026-05-01"
+    },
+    "abstain_grounding_risk_min": {
+      "value": 0.40,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    }
+  },
+  "complexity": {
+    "entropy_critical_gte": {
+      "value": 3.0,
+      "source": "Internal heuristic; Shannon entropy boundary above which case is treated as critical-complexity",
+      "last_reviewed": "2026-05-02"
+    },
+    "entropy_elevated_gte": {
+      "value": 2.0,
+      "source": "Internal heuristic; Shannon entropy boundary above which case is treated as elevated-complexity",
+      "last_reviewed": "2026-05-02"
+    }
+  },
+  "grounding": {
+    "support_overlap_min": {
+      "value": 0.45,
+      "source": "Internal heuristic for token-overlap support",
+      "last_reviewed": "2026-05-01"
+    },
+    "inline_demote_score_below": {
+      "value": 0.60,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "inline_drop_score_below": {
+      "value": 0.40,
+      "source": "Internal heuristic",
+      "last_reviewed": "2026-05-01"
+    },
+    "min_factual_claims_for_drop": {
+      "value": 3,
+      "source": "Sample-size guard against false-positive drops on candidates with too few factual claims to evaluate; addresses Batch-2 inline-grounding regression",
+      "last_reviewed": "2026-05-02"
+    },
+    "inline_demote_floor": {
+      "value": 0.50,
+      "source": "Lower bound on demote multiplier so a partially-grounded specific dx cannot collapse below a fully-grounded generic dx; addresses Batch-2 inline-grounding regression",
+      "last_reviewed": "2026-05-02"
+    }
+  }
+}

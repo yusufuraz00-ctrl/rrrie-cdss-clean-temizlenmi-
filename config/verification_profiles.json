@@ -1,0 +1,32 @@
+{
+  "_comment": "Verification gate thresholds per case profile. Edit here without touching source code.",
+  "profiles": {
+    "classic": {
+      "diagnosis_uncertainty_max": 0.9,
+      "epistemic_gate_min": 0.44,
+      "closure_coverage_min": 0.24,
+      "closure_contradiction_max": 0.24,
+      "uncertainty_revise_threshold": 0.72,
+      "evidence_gap_threshold": 0.24,
+      "reasoning_incomplete_threshold": 0.28
+    },
+    "low_risk": {
+      "diagnosis_uncertainty_max": 0.84,
+      "epistemic_gate_min": 0.4,
+      "closure_coverage_min": 0.34,
+      "closure_contradiction_max": 0.42,
+      "uncertainty_revise_threshold": 0.76,
+      "evidence_gap_threshold": 0.25,
+      "reasoning_incomplete_threshold": 0.55
+    },
+    "default": {
+      "diagnosis_uncertainty_max": 0.8,
+      "epistemic_gate_min": 0.44,
+      "closure_coverage_min": 0.5,
+      "closure_contradiction_max": 0.32,
+      "uncertainty_revise_threshold": 0.72,
+      "evidence_gap_threshold": 0.35,
+      "reasoning_incomplete_threshold": 0.55
+    }
+  }
+}

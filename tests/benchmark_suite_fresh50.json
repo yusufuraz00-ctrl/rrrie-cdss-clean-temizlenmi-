@@ -1,0 +1,651 @@
+{
+  "suite": "fresh50",
+  "description": "Fifty bilingual and mixed-difficulty CDSS benchmark cases for robustness, analysis, regression, and benchmarking.",
+  "cases": [
+    {
+      "case_id": "viral_uri_teacher_mixed",
+      "title": "Low-Risk Viral URI in a Teacher",
+      "difficulty": 2,
+      "disease_family": "benign_respiratory",
+      "note": "Common outpatient URI written in mixed English and Turkish phrasing.",
+      "patient_text": "31 year old teacher says, \"bogazim yaniyor ve burnum akiyor.\" Two days of sore throat, dry cough, runny nose, mild myalgia, and low fever 37.8 C after classroom exposure. No chest pain, no shortness of breath, eating and drinking okay, SpO2 98%.",
+      "expectations": {
+        "keyword_hits": ["viral upper respiratory infection", "viral uri", "influenza like viral uri"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    },
+    {
+      "case_id": "viral_pharyngitis_exam_tr",
+      "title": "Viral Farenjit During Exam Week",
+      "difficulty": 2,
+      "disease_family": "benign_ent",
+      "note": "Low-risk sore throat case with Turkish narrative and reassuring physiology.",
+      "patient_text": "20 yasinda universite ogrencisi, 2 gundur bogaz agrisi, burun akintisi, hafif oksuruk ve kas agrisi tarif ediyor. Arkadaslarinda benzer sikayetler var. Ates 37.7 C, SpO2 99%, nefes darligi, trismus, drooling ve tek tarafli ciddi boyun sismesi yok.",
+      "expectations": {
+        "keyword_hits": ["viral pharyngitis", "pharyngitis"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    },
+    {
+      "case_id": "acute_bronchitis_factory_tr",
+      "title": "Dusuk Risk Akut Bronshit",
+      "difficulty": 3,
+      "disease_family": "benign_respiratory",
+      "note": "Non-toxic cough-predominant presentation that should not escalate to catastrophic states.",
+      "patient_text": "38 yasinda fabrika iscisi, 5 gundur oksuruk, goguste yanma hissi, hafif balgam ve viral ust solunum yolu enfeksiyonu ardindan devam eden halsizlik tarif ediyor. Ates 37.5 C, tansiyon 124/78, nabiz 92, SpO2 97%, belirgin plevritik agrisi veya istirahatte dispnesi yok.",
+      "expectations": {
+        "keyword_hits": ["acute bronchitis", "bronchitis", "bronchitic illness"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    },
+    {
+      "case_id": "self_limited_gastro_outbreak_en",
+      "title": "College Outbreak Gastroenteritis",
+      "difficulty": 2,
+      "disease_family": "benign_gastrointestinal",
+      "note": "Clustered vomiting and diarrhea with preserved oral intake.",
+      "patient_text": "19 year old college student with 18 hours of nausea, three episodes of vomiting, loose stools, crampy abdominal discomfort, and multiple dorm mates sick with the same thing. Still tolerating fluids, no blood in stool, no focal abdominal guarding, blood pressure 112/70, pulse 88.",
+      "expectations": {
+        "keyword_hits": ["self limited gastroenteritis", "gastroenteritis", "diarrheal illness"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    },
+    {
+      "case_id": "self_limited_gastro_family_tr",
+      "title": "Aile Ici Bulasan Gastroenterit",
+      "difficulty": 2,
+      "disease_family": "benign_gastrointestinal",
+      "note": "Turkish low-risk diarrheal illness with strong contagion context.",
+      "patient_text": "27 yasinda hasta, bir gundur bulanti, sulu diski, karin kramplari ve hafif halsizlik anlatÄ±yor. Evde iki cocukta ayni sikayet baslamis. Sivi alabiliyor, idrar cikisi var, ates 37.4 C, rebound, kanli diski, siddetli lokalize karin agrisi ve senkop yok.",
+      "expectations": {
+        "keyword_hits": ["self limited gastroenteritis", "gastroenteritis", "diarrheal illness"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    },
+    {
+      "case_id": "influenza_dorm_en",
+      "title": "Influenza-Like Illness in a Dorm",
+      "difficulty": 3,
+      "disease_family": "benign_respiratory",
+      "note": "High-fever viral syndrome without respiratory failure.",
+      "patient_text": "22 year old student with abrupt fever, chills, headache, diffuse myalgias, sore throat, dry cough, and several sick dorm contacts. Temperature 38.9 C, pulse 104, blood pressure 118/72, SpO2 98%, speaking in full sentences and no focal neurologic deficit.",
+      "expectations": {
+        "keyword_hits": ["influenza like viral uri", "influenza", "viral upper respiratory infection"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    },
+    {
+      "case_id": "community_pneumonia_sepsis_tr",
+      "title": "Toplum Kaynakli Pnomoni ve Sepsis Riski",
+      "difficulty": 6,
+      "disease_family": "infectious_critical",
+      "note": "Older patient with hypoxemia, hypotension, and confusion.",
+      "patient_text": "69 yasinda erkek, 3 gundur balgamli oksuruk, ates, uykuya meyil ve gucsuzluk ile geldi. Tansiyon 86/52, nabiz 128, solunum 30, ates 39.2 C, SpO2 88%. Sag alt zonda ralleri var, idrar cikisi azalmis ve ailesi 'today he is confused' diyor.",
+      "expectations": {
+        "keyword_hits": ["pneumonia", "sepsis", "infectious pneumonia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["oxygen", "antibiotics", "fluids"]
+      }
+    },
+    {
+      "case_id": "aspiration_pneumonia_elder_en",
+      "title": "Aspiration Pneumonia After Vomiting",
+      "difficulty": 6,
+      "disease_family": "infectious_critical",
+      "note": "Frail elder with aspiration history and respiratory compromise.",
+      "patient_text": "78 year old nursing home resident developed cough, fever, and increasing work of breathing after vomiting overnight. He is drowsy, respiratory rate 32, SpO2 87% on room air, temperature 38.6 C, pulse 118, and coarse crackles are worse at the right base.",
+      "expectations": {
+        "keyword_hits": ["aspiration pneumonia", "pneumonia", "infectious aspiration"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["airway", "antibiotics", "oxygen"]
+      }
+    },
+    {
+      "case_id": "pyelonephritis_urosepsis_tr",
+      "title": "Piyelonefritten Urosepsise Gidis",
+      "difficulty": 6,
+      "disease_family": "infectious_critical",
+      "note": "Flank pain and urinary symptoms with shock physiology.",
+      "patient_text": "52 yasinda kadin, iki gundur dizuri, sik idrara cikma, sag yan agrisi ve titreme tarif ediyor. Simdi sersem, tansiyon 90/56, nabiz 122, ates 39.4 C. Kostovertebral hassasiyet belirgin, bulanti var ve oral alimi azalmis.",
+      "expectations": {
+        "keyword_hits": ["pyelonephritis", "urosepsis", "kidney infection"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["antibiotics", "fluids", "urine", "culture"]
+      }
+    },
+    {
+      "case_id": "cellulitis_sepsis_diabetes_en",
+      "title": "Diabetic Cellulitis With Sepsis Drift",
+      "difficulty": 5,
+      "disease_family": "infectious_critical",
+      "note": "Soft tissue infection with systemic toxicity in diabetes.",
+      "patient_text": "61 year old man with diabetes has rapidly expanding redness of the lower leg, fever, malaise, and confusion. Blood pressure 92/58, pulse 121, temperature 39.1 C, and the leg is hot, tender, and swollen with streaking erythema but no obvious trauma history.",
+      "expectations": {
+        "keyword_hits": ["cellulitis", "soft tissue infection", "sepsis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["antibiotics", "fluids"]
+      }
+    },
+    {
+      "case_id": "bacterial_meningitis_dorm_tr",
+      "title": "Yurtta Baslayan Bakteriyel Menenjit",
+      "difficulty": 8,
+      "disease_family": "neuroinfectious",
+      "note": "Classic CNS infection with fever, neck stiffness, and confusion.",
+      "patient_text": "21 yasinda universite ogrencisi, sabahdan beri siddetli bas agrisi, ense sertligi, kusma, fotofobi ve ates ile geldi. Arkadaslari 'once normaldi sonra kafasi karisti' diyor. Nabiz 124, tansiyon 98/60, ates 39.5 C ve cevaplari yavas.",
+      "expectations": {
+        "keyword_hits": ["bacterial meningitis", "meningitis", "cns infection"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["antibiotics", "lumbar puncture", "blood cultures"]
+      }
+    },
+    {
+      "case_id": "encephalitis_confusion_en",
+      "title": "Encephalitis With Behavioral Change",
+      "difficulty": 7,
+      "disease_family": "neuroinfectious",
+      "note": "Altered mental status with fever and temporal-lobe style symptoms.",
+      "patient_text": "27 year old with fever, severe headache, odd behavior, confusion, and one witnessed focal seizure this afternoon. Family says he keeps staring and saying unrelated words. Temperature 38.8 C, pulse 116, and he is disoriented but moving all extremities.",
+      "expectations": {
+        "keyword_hits": ["encephalitis", "cns infection", "viral encephalitis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["neurology", "lumbar puncture", "antivirals"]
+      }
+    },
+    {
+      "case_id": "spinal_epidural_abscess_ivdu_tr",
+      "title": "IVDU Sonrasi Spinal Epidural Apse",
+      "difficulty": 8,
+      "disease_family": "infectious_spinal_emergency",
+      "note": "Back pain, fever, weakness, and retention in an injection drug user.",
+      "patient_text": "36 yasinda erkek, son bir haftadir artan sirt agrisi, ates, bacakta gucsuzluk ve idrar yapamama sikayetiyle geldi. Gecmiste IV madde kullanimi var. Muayenede bel orta hatta hassas, yuruyemiyor, ateÅŸ 38.7 C.",
+      "expectations": {
+        "keyword_hits": ["spinal epidural abscess", "epidural abscess", "cord compression"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["spine mri", "neurosurgery", "antibiotics"]
+      }
+    },
+    {
+      "case_id": "cauda_equina_disc_en",
+      "title": "Cauda Equina Compression After Lifting",
+      "difficulty": 7,
+      "disease_family": "spinal_emergency",
+      "note": "Noninfectious spinal compression with urinary retention and saddle symptoms.",
+      "patient_text": "45 year old warehouse worker developed severe low back pain after lifting, then progressive bilateral leg weakness, saddle numbness, and difficulty passing urine over 12 hours. He is afebrile but can barely stand and reports numbness around the groin.",
+      "expectations": {
+        "keyword_hits": ["cauda equina", "cord compression", "spinal compression"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["spine mri", "neurosurgery", "bladder"]
+      }
+    },
+    {
+      "case_id": "subarachnoid_hemorrhage_gym_en",
+      "title": "Thunderclap Headache at the Gym",
+      "difficulty": 9,
+      "disease_family": "intracranial_hemorrhage",
+      "note": "Classic SAH onset during exertion.",
+      "patient_text": "33 year old suddenly drops the barbell and says this is the worst headache of my life. He vomits, becomes photophobic, and has neck stiffness within minutes. Blood pressure 186/102, pulse 108, and there was brief collapse but he is now awake and distressed.",
+      "expectations": {
+        "keyword_hits": ["subarachnoid hemorrhage", "thunderclap headache", "intracranial hemorrhage"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct head", "lumbar puncture", "neurosurgery"]
+      }
+    },
+    {
+      "case_id": "subarachnoid_hemorrhage_postcoital_tr",
+      "title": "Postkoital Thunderclap SAH",
+      "difficulty": 9,
+      "disease_family": "intracranial_hemorrhage",
+      "note": "Turkish thunderclap presentation with vomiting and meningismus.",
+      "patient_text": "41 yasinda kadin, iliski sirasinda aniden kopar gibi bas agrisi basladigini, hemen ardindan kusma ve ense sertligi gelistigini soyluyor. Tansiyon 192/110, fotofobi var, 'hayatimdaki en kotu bas agrisi' diyor ve ayakta duramiyor.",
+      "expectations": {
+        "keyword_hits": ["subarachnoid hemorrhage", "thunderclap headache", "intracranial hemorrhage"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct head", "lumbar puncture", "neurosurgery"]
+      }
+    },
+    {
+      "case_id": "giant_cell_arteritis_vision_en",
+      "title": "Vision-Threatening Giant Cell Arteritis",
+      "difficulty": 7,
+      "disease_family": "vasculitic_vision_emergency",
+      "note": "Jaw claudication and visual symptoms in an older adult.",
+      "patient_text": "72 year old with new unilateral temporal headache, scalp tenderness, jaw pain when chewing, and brief episodes of blurry vision in the left eye. ESR is not yet back. She looks uncomfortable but neurologically intact and fears permanent vision loss.",
+      "expectations": {
+        "keyword_hits": ["giant cell arteritis", "temporal arteritis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["steroids", "ophthalmology", "esr"]
+      }
+    },
+    {
+      "case_id": "acute_ischemic_stroke_aphasia_tr",
+      "title": "Ani Afazi ile Akut Iskemik Inme",
+      "difficulty": 8,
+      "disease_family": "stroke_emergency",
+      "note": "Language-predominant stroke presentation.",
+      "patient_text": "67 yasinda erkek, 40 dakika once konusmasi bozulmus ve sag kolda gucsuzluk baslamis. Esi, 'kelimeleri cikaramiyor ama ne demek istedigini biliyor gibi' diyor. Tansiyon 174/96, yuzde hafif asimetri var, travma oykusu yok.",
+      "expectations": {
+        "keyword_hits": ["acute ischemic stroke", "stroke", "aphasia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct head", "stroke team"]
+      }
+    },
+    {
+      "case_id": "posterior_stroke_dizziness_en",
+      "title": "Posterior Stroke Hidden Behind Dizziness",
+      "difficulty": 8,
+      "disease_family": "stroke_emergency",
+      "note": "Vertigo-vomiting presentation that should not be dismissed as benign peripheral disease.",
+      "patient_text": "59 year old with abrupt severe dizziness, repeated vomiting, inability to walk, and new double vision. He says the room is spinning but also feels weak and clumsy on the left side. Blood pressure 168/94 and finger-to-nose testing is abnormal.",
+      "expectations": {
+        "keyword_hits": ["posterior circulation stroke", "stroke", "brainstem stroke"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct head", "stroke team", "neurology"]
+      }
+    },
+    {
+      "case_id": "seizure_postictal_en",
+      "title": "Generalized Seizure With Postictal Confusion",
+      "difficulty": 5,
+      "disease_family": "neurologic_event",
+      "note": "Resolved convulsive event with expected postictal period.",
+      "patient_text": "24 year old witnessed to have one minute of generalized shaking followed by confusion, tongue bite, and urinary incontinence. He is now sleepy but arousable, moving all limbs, blood sugar normal, afebrile, and gradually improving over 20 minutes.",
+      "expectations": {
+        "keyword_hits": ["seizure", "postictal state", "generalized tonic clonic seizure"],
+        "status_hits": ["revise", "urgent_escalation"]
+      }
+    },
+    {
+      "case_id": "hyperkalemia_dialysis_tr",
+      "title": "Diyaliz Kaciran Hastada Hiperkalemi",
+      "difficulty": 8,
+      "disease_family": "metabolic_emergency",
+      "note": "Dialysis history, weakness, and bradycardic instability.",
+      "patient_text": "58 yasinda erkek, iki diyaliz seansini kacirdigini ve bugun giderek artan halsizlik, carpinti yerine yavaslama hissi ve nefes darligi yasadigini soyluyor. Nabiz 38, tansiyon 88/54, EKG'de genis QRS ve sivri T dalgalari rapor ediliyor.",
+      "expectations": {
+        "keyword_hits": ["hyperkalemia", "electrolyte emergency", "bradyarrhythmia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["calcium", "ecg", "potassium", "renal"]
+      }
+    },
+    {
+      "case_id": "hyperkalemia_acei_brady_en",
+      "title": "ACE Inhibitor Hyperkalemia With Bradycardia",
+      "difficulty": 7,
+      "disease_family": "metabolic_emergency",
+      "note": "Medication and renal history point to reversible electrolyte cause.",
+      "patient_text": "74 year old with chronic kidney disease on lisinopril presents with weakness, lightheadedness, and near-syncope. Heart rate is 34, blood pressure 92/58, and the ECG reportedly shows a slow wide-complex rhythm. No crushing chest pain and no focal neurologic deficit.",
+      "expectations": {
+        "keyword_hits": ["hyperkalemia", "electrolyte emergency", "bradyarrhythmia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["calcium", "ecg", "potassium", "renal"]
+      }
+    },
+    {
+      "case_id": "dka_teen_en",
+      "title": "Teenager With Diabetic Ketoacidosis",
+      "difficulty": 7,
+      "disease_family": "metabolic_emergency",
+      "note": "Classic DKA physiology with Kussmaul breathing and dehydration.",
+      "patient_text": "15 year old with two days of vomiting, abdominal pain, polyuria, intense thirst, and deep rapid breathing. Glucose is 418 mg/dL, ketones are positive, blood pressure 90/56, pulse 136, and parents report recent weight loss.",
+      "expectations": {
+        "keyword_hits": ["dka", "diabetic ketoacidosis", "ketoacidosis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["fluids", "insulin", "potassium"]
+      }
+    },
+    {
+      "case_id": "hhs_elder_tr",
+      "title": "Yasli Hastada HHS",
+      "difficulty": 7,
+      "disease_family": "metabolic_emergency",
+      "note": "Profound dehydration and confusion without major ketosis story.",
+      "patient_text": "79 yasinda kadin, son gunlerde cok su icme, sik idrara cikma ve giderek artan bilinÃ§ bulanÄ±klÄ±ÄŸÄ± ile getirildi. Parmak ucu glukoz cihazda okunamayacak kadar yuksek, mukozalar kuru, tansiyon 94/60 ve derin asidotik solunum yok.",
+      "expectations": {
+        "keyword_hits": ["hhs", "hyperosmolar hyperglycemic state", "hyperglycemic emergency"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["fluids", "glucose", "electrolytes"]
+      }
+    },
+    {
+      "case_id": "hypoglycemia_wernicke_mixed",
+      "title": "Hypoglycemia and Wernicke Overlap",
+      "difficulty": 6,
+      "disease_family": "metabolic_neuro_overlap",
+      "note": "Alcohol use and malnutrition create a dual-risk correction problem.",
+      "patient_text": "46 year old with alcohol dependence is brought in confused, sweaty, and unsteady. Fingerstick glucose is 42 mg/dL. He also has horizontal nystagmus and gait ataxia; arkadasi says he has barely eaten for days. Improvement starts after dextrose but confusion does not fully clear.",
+      "expectations": {
+        "keyword_hits": ["hypoglycemia", "wernicke", "thiamine"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["glucose", "thiamine"]
+      }
+    },
+    {
+      "case_id": "thyroid_storm_agitated_en",
+      "title": "Thyroid Storm Behind Agitation",
+      "difficulty": 9,
+      "disease_family": "endocrine_critical",
+      "note": "Hyperadrenergic endocrine emergency disguised as psychiatric agitation.",
+      "patient_text": "35 year old becomes acutely agitated, tremulous, febrile, and confused with severe tachycardia after several weeks of weight loss, diarrhea, and heat intolerance. Temperature 40.1 C, heart rate 168, blood pressure 156/68, skin is warm and sweaty, and there is a noticeable stare.",
+      "expectations": {
+        "keyword_hits": ["thyroid storm", "thyrotoxic crisis", "thyrotoxicosis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "blocked_hits": ["aspirin"],
+        "required_hits": ["beta", "thionamide", "endocrine", "acetaminophen"]
+      }
+    },
+    {
+      "case_id": "myxedema_coma_tr",
+      "title": "Miksodem Komasina Giden Hipotiroidi",
+      "difficulty": 8,
+      "disease_family": "endocrine_critical",
+      "note": "Cold, slow, and obtunded endocrine failure state.",
+      "patient_text": "68 yasinda kadin, kis gunu evde uyuklar halde bulunuyor. Ailesi haftalardir halsizlik, kabizlik, ses kalinlasmasi ve usume tarifliyor. Muayenede hipotermik, nabiz 42, konusmasi yavas, cildi kuru ve belirgin mental yavaslama var.",
+      "expectations": {
+        "keyword_hits": ["myxedema coma", "severe hypothyroidism", "hypothyroid crisis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["thyroid hormone", "hydrocortisone", "warming"]
+      }
+    },
+    {
+      "case_id": "adrenal_crisis_gastro_en",
+      "title": "Adrenal Crisis Masquerading as Gastroenteritis",
+      "difficulty": 8,
+      "disease_family": "endocrine_critical",
+      "note": "Shock, vomiting, and steroid history should redirect away from benign GI closure.",
+      "patient_text": "49 year old with known adrenal insufficiency and recent missed steroid doses presents with vomiting, abdominal pain, profound weakness, and dizziness. Blood pressure is 78/46, pulse 124, and he looks dehydrated but also unusually pigmented. Family thought it was just stomach flu.",
+      "expectations": {
+        "keyword_hits": ["adrenal crisis", "adrenal insufficiency", "shock endocrine"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["steroids", "fluids"]
+      }
+    },
+    {
+      "case_id": "anaphylaxis_peanut_en",
+      "title": "Peanut Anaphylaxis With Silent Chest",
+      "difficulty": 8,
+      "disease_family": "allergic_critical",
+      "note": "Airway and distributive collapse must dominate reasoning.",
+      "patient_text": "18 year old with known peanut allergy develops throat tightness, diffuse hives, wheezing that is becoming quieter, vomiting, and dizziness within minutes of eating dessert. Blood pressure 82/48, pulse 138, respiratory rate 30, and she can only speak in short phrases.",
+      "expectations": {
+        "keyword_hits": ["anaphylaxis", "allergic reaction", "anaphylactic shock"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["epinephrine", "airway", "oxygen"]
+      }
+    },
+    {
+      "case_id": "anaphylaxis_antibiotic_tr",
+      "title": "Antibiyotik Sonrasi Anafilaksi",
+      "difficulty": 8,
+      "disease_family": "allergic_critical",
+      "note": "Turkish medication-triggered anaphylaxis narrative.",
+      "patient_text": "33 yasinda hasta, yeni baslanan antibiyotikten kisa sure sonra dudak sismesi, yaygin urtiker, nefes darligi ve bas donmesi gelistiriyor. Tansiyon 84/50, nabiz 132, ses kisik ve akcigerde wheezing giderek az duyuluyor.",
+      "expectations": {
+        "keyword_hits": ["anaphylaxis", "allergic reaction", "anaphylactic shock"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["epinephrine", "airway", "oxygen"]
+      }
+    },
+    {
+      "case_id": "massive_pe_flight_en",
+      "title": "Pulmonary Embolism After Long Flight",
+      "difficulty": 8,
+      "disease_family": "cardiopulmonary_critical",
+      "note": "Pleuritic chest pain, hypoxemia, and syncope risk after immobility.",
+      "patient_text": "44 year old develops sudden pleuritic chest pain, shortness of breath, and near-syncope one day after a long-haul flight. Heart rate 132, respiratory rate 30, SpO2 88%, and the left calf is swollen and tender. Lung exam is otherwise surprisingly clear.",
+      "expectations": {
+        "keyword_hits": ["pulmonary embolism", "pulmonary embol", "obstructive risk"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct pulmonary angiography", "pe pathway", "anticoagulation"]
+      }
+    },
+    {
+      "case_id": "massive_pe_postop_tr",
+      "title": "Ameliyat Sonrasi Masif PE",
+      "difficulty": 9,
+      "disease_family": "cardiopulmonary_critical",
+      "note": "Postoperative obstructive shock trap.",
+      "patient_text": "56 yasinda hasta, ortopedik ameliyattan bir hafta sonra ani nefes darligi, gogus agrisi ve bayilir gibi olma ile geldi. Tansiyon 82/48, nabiz 140, SpO2 86%, juguler dolgunluk artmis ve akciger oskultasyonu belirgin degil.",
+      "expectations": {
+        "keyword_hits": ["pulmonary embolism", "pulmonary embol", "obstructive risk"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct pulmonary angiography", "pe pathway", "anticoagulation"]
+      }
+    },
+    {
+      "case_id": "inferior_rv_mi_nitrate_trap_en",
+      "title": "Inferior RV MI With Nitrate Trap",
+      "difficulty": 8,
+      "disease_family": "cardiac_critical",
+      "note": "Right-sided infarct where standard chest pain shortcuts can be harmful.",
+      "patient_text": "63 year old with crushing epigastric and chest pressure, diaphoresis, nausea, hypotension, and bradycardia. Inferior ST elevation is reported and he worsened after nitroglycerin given by EMS. Lungs are clear but neck veins look full.",
+      "expectations": {
+        "keyword_hits": ["inferior myocardial infarction", "rv involvement", "right ventricular myocardial infarction"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "blocked_hits": ["nitroglycerin", "morphine"],
+        "required_hits": ["right_sided_ecg_v4r", "fluid"]
+      }
+    },
+    {
+      "case_id": "aortic_dissection_pulse_deficit_tr",
+      "title": "Nabiz Asimetrisi ile Aort Diseksiyonu",
+      "difficulty": 9,
+      "disease_family": "vascular_critical",
+      "note": "Sharp chest-back pain and pulse deficit should block ACS closure.",
+      "patient_text": "61 yasinda erkek, aniden baslayan yirtilir tarzda gogus agrisinin sirtina vurdugunu soyluyor. Sol kolda nabiz daha zayif, tansiyon kollarda farkli, terli ve huzursuz. EKG nondiagnostik, ama agrisi cok siddetli.",
+      "expectations": {
+        "keyword_hits": ["aortic dissection", "acute aortic syndrome"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "blocked_hits": ["heparin", "aspirin"],
+        "required_hits": ["cta", "cardiothoracic surgery"]
+      }
+    },
+    {
+      "case_id": "ruptured_ectopic_shock_en",
+      "title": "Ruptured Ectopic Pregnancy in Shock",
+      "difficulty": 9,
+      "disease_family": "obstetric_critical",
+      "note": "Classic pregnancy-related hemorrhagic shock.",
+      "patient_text": "29 year old with six weeks of amenorrhea has sudden pelvic pain, shoulder pain, dizziness, and a small amount of vaginal bleeding before collapsing in triage. Blood pressure 76/44, pulse 144, abdomen tender and distended, and pregnancy test is positive.",
+      "expectations": {
+        "keyword_hits": ["ectopic pregnancy", "ruptured ectopic", "pregnancy related shock"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["pelvic ultrasound", "ob gyn", "crossmatch", "resuscitation"]
+      }
+    },
+    {
+      "case_id": "ectopic_syncope_tr",
+      "title": "Senkop ile Gelen Ektopik Gebelik",
+      "difficulty": 8,
+      "disease_family": "obstetric_critical",
+      "note": "Turkish obstetric emergency with subtle bleeding but severe instability.",
+      "patient_text": "31 yasinda kadin, adet gecikmesi oldugunu, hafif vajinal lekelenme ve alt karin agrisi varken banyoda bayildigini anlatiyor. Tansiyon 84/52, nabiz 132, omuza vuran agri var ve beta hCG testi pozitif.",
+      "expectations": {
+        "keyword_hits": ["ectopic pregnancy", "ruptured ectopic", "pregnancy related shock"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["pelvic ultrasound", "ob gyn", "crossmatch", "resuscitation"]
+      }
+    },
+    {
+      "case_id": "appendicitis_migratory_tr",
+      "title": "Migratuar Agri ile Apandisit",
+      "difficulty": 6,
+      "disease_family": "surgical_abdomen",
+      "note": "Classic surgical abdomen narrative in Turkish.",
+      "patient_text": "24 yasinda erkek, agrinin once gobek cevresinde baslayip saatler icinde sag alt kadrana yerlestigini soyluyor. Bulanti, istahsizlik ve yururken agrida artis var. Ates 38 C, rebound hassasiyet mevcut, ishal yok.",
+      "expectations": {
+        "keyword_hits": ["appendicitis", "right lower quadrant", "surgical abdomen"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["surgical", "abdominal imaging", "rebound"]
+      }
+    },
+    {
+      "case_id": "appendicitis_classic_en",
+      "title": "Classic Early Appendicitis",
+      "difficulty": 6,
+      "disease_family": "surgical_abdomen",
+      "note": "English RLQ case to test stability across wording variants.",
+      "patient_text": "26 year old with abdominal pain that started around the belly button yesterday and is now sharply localized to the right lower quadrant. She has nausea, anorexia, low-grade fever, and pain with coughing or walking. No pregnancy history and no urinary burning.",
+      "expectations": {
+        "keyword_hits": ["appendicitis", "right lower quadrant", "surgical abdomen"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["surgical", "abdominal imaging", "rebound"]
+      }
+    },
+    {
+      "case_id": "acute_cholangitis_mixed",
+      "title": "Acute Cholangitis With Sepsis Physiology",
+      "difficulty": 7,
+      "disease_family": "hepatobiliary_critical",
+      "note": "Biliary obstruction plus infection in mixed-language phrasing.",
+      "patient_text": "64 year old says, 'bugun iyice sarardim ve usuyorum.' He has fever, right upper quadrant pain, jaundice, rigors, and confusion. Blood pressure 88/50, pulse 126, and family says dark urine started two days ago after known gallstones.",
+      "expectations": {
+        "keyword_hits": ["acute cholangitis", "ascending cholangitis", "biliary sepsis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["antibiotics", "biliary decompression", "blood cultures"]
+      }
+    },
+    {
+      "case_id": "mesenteric_ischemia_afib_en",
+      "title": "Mesenteric Ischemia in Atrial Fibrillation",
+      "difficulty": 9,
+      "disease_family": "vascular_abdominal_critical",
+      "note": "Pain out of proportion should override bland abdominal exam.",
+      "patient_text": "73 year old with atrial fibrillation develops abrupt severe abdominal pain, repeated vomiting, and intense distress, yet the abdomen is only mildly tender on exam. Lactate is elevated, pulse is irregular at 132, and family says the pain seems far worse than the exam.",
+      "expectations": {
+        "keyword_hits": ["mesenteric ischemia", "bowel ischemia", "intestinal ischemia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["cta", "surgery", "lactate"]
+      }
+    },
+    {
+      "case_id": "pancreatic_jaundice_tr",
+      "title": "Pankreatik Maligniteyi Dusunduren Sarilik",
+      "difficulty": 6,
+      "disease_family": "hepatobiliary_malignancy",
+      "note": "Progressive painless jaundice and weight loss.",
+      "patient_text": "66 yasinda erkek, haftalardir istahsizlik, kilo kaybi, koyu idrar ve agrisiz sarilik tarif ediyor. Son gunlerde diski rengi acilmis. Atesi yok ama kasintisi artmis ve ailesi yuzunun sarardigini soyluyor.",
+      "expectations": {
+        "keyword_hits": ["pancreatic malignancy", "obstructive jaundice", "pancreatic cancer", "biliary obstruction"],
+        "status_hits": ["revise", "preliminary"],
+        "required_hits": ["ct abdomen", "gi", "oncology"]
+      }
+    },
+    {
+      "case_id": "ovarian_torsion_tr",
+      "title": "Ani Pelvik Agri ile Over Torsiyonu",
+      "difficulty": 7,
+      "disease_family": "gynecologic_emergency",
+      "note": "Sudden unilateral pelvic pain with vomiting.",
+      "patient_text": "23 yasinda kadin, aniden baslayan siddetli sag kasik agrisi ve kusma ile geliyor. Ates yok, gebelik testi negatif, ancak hareket ettikce agrisi artiyor. Gecmiste over kisti oldugu soylenmis.",
+      "expectations": {
+        "keyword_hits": ["ovarian torsion", "adnexal torsion", "pelvic emergency"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["pelvic ultrasound", "gynecology", "surgery"]
+      }
+    },
+    {
+      "case_id": "testicular_torsion_en",
+      "title": "Acute Testicular Torsion",
+      "difficulty": 7,
+      "disease_family": "urologic_emergency",
+      "note": "Time-sensitive scrotal pain case.",
+      "patient_text": "17 year old wakes with sudden severe left testicular pain, nausea, and swelling. No fever, no dysuria, and the testis sits high with marked tenderness. He looks pale and is guarding the groin.",
+      "expectations": {
+        "keyword_hits": ["testicular torsion", "acute scrotum", "urologic emergency"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["urology", "doppler", "surgery"]
+      }
+    },
+    {
+      "case_id": "organophosphate_farmer_tr",
+      "title": "Tarim Ilaci Maruziyeti Sonrasi Kolinerjik Toksidrom",
+      "difficulty": 8,
+      "disease_family": "toxicologic_critical",
+      "note": "Farmer exposure with secretions, fasciculations, and bronchorrhea.",
+      "patient_text": "45 yasinda ciftci, ilaclama sonrasi terleme, salya artisi, karin kramplari, ishal, goz bebeklerinde kuculme ve nefes darligi yasiyor. Nabiz 48, akcigerlerde yaygin islak sesler var, giysileri pestisit kokuyor.",
+      "expectations": {
+        "keyword_hits": ["organophosphate poisoning", "cholinergic toxidrome", "pesticide poisoning"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["atropine", "pralidoxime", "decontamination"]
+      }
+    },
+    {
+      "case_id": "opioid_overdose_en",
+      "title": "Opioid Overdose With Respiratory Depression",
+      "difficulty": 7,
+      "disease_family": "toxicologic_critical",
+      "note": "Pinpoint pupils and hypoventilation should close quickly.",
+      "patient_text": "28 year old is found difficult to arouse with slow breathing after friends say he used a pill sold as oxycodone. Respiratory rate is 6, oxygen saturation 82%, pupils are pinpoint, and skin is cool. Glucose is normal.",
+      "expectations": {
+        "keyword_hits": ["opioid overdose", "opioid toxidrome", "respiratory depression"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["naloxone", "airway", "oxygen"]
+      }
+    },
+    {
+      "case_id": "serotonin_syndrome_mixed",
+      "title": "Serotonin Syndrome on Combined Medications",
+      "difficulty": 8,
+      "disease_family": "toxicologic_critical",
+      "note": "Medication interaction with clonus and hyperthermia.",
+      "patient_text": "34 year old recently started a new antidepressant and also used linezolid. Now he is agitated, febrile, sweaty, and tremulous with inducible clonus and hyperreflexia. Family says he keeps saying, 'icimden cikacak gibi oluyorum.'",
+      "expectations": {
+        "keyword_hits": ["serotonin syndrome", "serotonergic toxicity", "hyperreflexia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["cooling", "benzodiazepine", "stop serotonergic"]
+      }
+    },
+    {
+      "case_id": "neuroleptic_malignant_syndrome_tr",
+      "title": "Antipsikotik Sonrasi NMS",
+      "difficulty": 8,
+      "disease_family": "toxicologic_critical",
+      "note": "Rigid, febrile, autonomically unstable patient after dopamine blockade.",
+      "patient_text": "40 yasinda erkek, yeni antipsikotik doz artisindan sonra yuksek ates, kaslarda tahta gibi sertlik, tasikardi ve bilinÃ§ bulanÄ±klÄ±ÄŸÄ± ile geliyor. Terli, tansiyonu dalgali ve hareket ettirmek zor. Refleksler belirgin artmis degil.",
+      "expectations": {
+        "keyword_hits": ["neuroleptic malignant syndrome", "nms", "rigidity hyperthermia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["cooling", "stop antipsychotic", "icu"]
+      }
+    },
+    {
+      "case_id": "necrotizing_soft_tissue_infection_en",
+      "title": "Necrotizing Soft Tissue Infection",
+      "difficulty": 9,
+      "disease_family": "infectious_critical",
+      "note": "Pain out of proportion and toxicity in a limb infection.",
+      "patient_text": "57 year old with diabetes has rapidly worsening leg pain that seems far out of proportion to the skin findings, now with dusky discoloration, fever, confusion, and hypotension. Crepitus is subtle but possible, and he looks profoundly ill.",
+      "expectations": {
+        "keyword_hits": ["necrotizing soft tissue infection", "necrotizing fasciitis", "soft tissue infection"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["surgery", "antibiotics", "source control"]
+      }
+    },
+    {
+      "case_id": "viral_uri_newmother_tr",
+      "title": "Yeni Annede Dusuk Risk Viral URI",
+      "difficulty": 2,
+      "disease_family": "benign_respiratory",
+      "note": "Another low-risk respiratory vignette with different Turkish wording.",
+      "patient_text": "29 yasinda yeni anne, iki gundur burun akintisi, hafif bogaz agrisi, kuru oksuruk ve cocuktan bulasmis gibi hissettiren kirginlik tarif ediyor. Ates 37.6 C, SpO2 99%, gogus agrisi ve nefes darligi yok, bebekle ilgilenebiliyor.",
+      "expectations": {
+        "keyword_hits": ["viral upper respiratory infection", "viral uri", "influenza like viral uri"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    },
+    {
+      "case_id": "gastro_travel_en",
+      "title": "Traveler's Self-Limited Gastroenteritis",
+      "difficulty": 3,
+      "disease_family": "benign_gastrointestinal",
+      "note": "Another benign GI case to test stability against catastrophic false positives.",
+      "patient_text": "34 year old returns from a short trip with one day of watery diarrhea, mild nausea, crampy abdominal pain, and low appetite. He is still drinking, blood pressure is 116/74, heart rate 90, there is no blood in stool, and abdominal exam is soft without focal rebound.",
+      "expectations": {
+        "keyword_hits": ["self limited gastroenteritis", "gastroenteritis", "diarrheal illness"],
+        "status_hits": ["preliminary", "revise", "accept"]
+      }
+    }
+  ]
+}
+

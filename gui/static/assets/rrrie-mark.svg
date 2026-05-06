@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="RRRIE">
+  <defs>
+    <linearGradient id="rmGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a6ab0"></stop>
+      <stop offset="100%" stop-color="#173f70"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#rmGrad)"></rect>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"></rect>
+  
+  <path d="M21 18 H35.5 C40.5 18 44 21.4 44 26 C44 29.6 41.7 32.5 38.3 33.6 L44.5 46 H39.6 L33.8 34.2 H25.5 V46 H21 Z M25.5 22 V30.4 H35 C37.6 30.4 39.4 28.6 39.4 26.2 C39.4 23.8 37.6 22 35 22 Z" fill="#ffffff"></path>
+  
+  <circle cx="48" cy="20" r="3.2" fill="#ffffff" opacity=".95"></circle>
+  <circle cx="48" cy="20" r="3.2" fill="none" stroke="#ffffff" stroke-width="1" opacity=".4"></circle>
+</svg>

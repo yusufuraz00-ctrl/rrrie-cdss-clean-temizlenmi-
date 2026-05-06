@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RRRIE Clinical Decision Support - AI-powered diagnostic reasoning workspace for clinical professionals.">
+  <meta name="color-scheme" content="light">
+  <title>RRRIE | Clinical Intelligence</title>
+  <link rel="icon" href="/static/assets/rrrie-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/static/style.css?v=19.0">
+</head>
+<body>
+
+<div class="app">
+  
+  <aside class="rail" aria-label="Primary navigation">
+    <div class="rail-mark" aria-hidden="true">R</div>
+    <nav class="rail-nav" role="tablist" aria-label="Workspace tabs">
+      <button id="sidenav-reasoning" class="rail-link nav-link sidenav-item active" data-action="switch-tab" data-tab-target="reasoning" type="button" role="tab" aria-selected="true" aria-controls="view-reasoning"><span class="material-symbols-outlined" aria-hidden="true">clinical_notes</span><span>Analyze</span></button>
+      <button id="sidenav-registry" class="rail-link nav-link sidenav-item" data-action="switch-tab" data-tab-target="registry" type="button" role="tab" aria-selected="false" aria-controls="view-registry"><span class="material-symbols-outlined" aria-hidden="true">folder_open</span><span>Library</span></button>
+      <button id="sidenav-schedule" class="rail-link nav-link sidenav-item" data-action="switch-tab" data-tab-target="schedule" data-refresh-learning="true" type="button" role="tab" aria-selected="false" aria-controls="view-schedule"><span class="material-symbols-outlined" aria-hidden="true">neurology</span><span>Learning</span></button>
+      <button id="sidenav-overview" class="rail-link nav-link sidenav-item" data-action="switch-tab" data-tab-target="overview" type="button" role="tab" aria-selected="false" aria-controls="view-overview"><span class="material-symbols-outlined" aria-hidden="true">monitoring</span><span>System</span></button>
+    </nav>
+    <div class="rail-spacer"></div>
+  </aside>
+
+  
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-title">RRRIE</span>
+      <span id="brandSubTitle" class="brand-sub">Clinical agent workspace</span>
+    </div>
+    <div class="top-actions">
+      <div class="mode-switch">
+        <button id="btnFast" class="mode-btn" title="Fast" aria-label="Use fast reasoning mode" type="button" data-action="set-mode" data-mode="fast"><span class="material-symbols-outlined" aria-hidden="true">bolt</span></button>
+        <button id="btnThinking" class="mode-btn active" title="Thinking" aria-label="Use balanced thinking mode" type="button" data-action="set-mode" data-mode="thinking"><span class="material-symbols-outlined" aria-hidden="true">psychology</span></button>
+        <button id="btnDeep" class="mode-btn" title="Deep" aria-label="Use deep reasoning mode" type="button" data-action="set-mode" data-mode="deep"><span class="material-symbols-outlined" aria-hidden="true">science</span></button>
+      </div>
+      <label class="llm-toggle"><input id="llmModeToggle" type="checkbox"><span class="track"></span><span id="llmModeLabel">Local</span></label>
+      <span class="pill" role="status" aria-live="polite"><span id="statusDotInner" class="dot"></span><span id="statusText">Connected</span></span>
+      <button id="detailsDrawerToggle" class="btn-secondary" type="button" data-action="toggle-details" aria-expanded="false" aria-controls="evidenceStatePanel"><span class="material-symbols-outlined">tune</span>Details</button>
+    </div>
+  </header>
+
+  
+  <main class="main">
+    <div class="scroll">
+      
+      <div id="view-reasoning" class="workspace view-section active" data-view-panel="reasoning" role="tabpanel" aria-labelledby="sidenav-reasoning">
+        <section id="analysisWorkspace" class="analysis-shell console" data-state="idle" data-stage="idle" data-progress="idle" aria-label="Analysis command surface">
+          <div class="run-console">
+            <div class="run-header">
+              <div class="run-title">
+                <span class="eyebrow">Analysis command</span>
+                <h1>Clinical reasoning</h1>
+                <p id="analysisStageCaption" class="lead">Enter a patient narrative to start a focused diagnostic pass.</p>
+              </div>
+              <span id="analysisStateBadge" class="state-pill analysis-state-pill is-idle"><span class="dot"></span>Idle</span>
+            </div>
+
+            <div id="globalProgressBar" class="global-progress-bar" role="progressbar" aria-label="Overall workflow progress" aria-valuemin="0" aria-valuemax="100" aria-busy="false">
+              <div class="global-progress-track">
+                <div id="globalProgressFill" class="global-progress-fill"></div>
+              </div>
+              <div class="global-progress-copy">
+                <strong class="global-progress-title">Pipeline progress</strong>
+                <span class="global-progress-caption">Submit a case and watch the workflow illuminate as the packet is built.</span>
+              </div>
+            </div>
+
+            <div class="run-progress-row">
+              <div id="analysisProgressRing" class="ring progress-token" role="progressbar" aria-label="Analysis progress" aria-valuemin="0" aria-valuemax="100" aria-valuetext="No analysis running"><span id="analysisProgressValue">--</span></div>
+              <div class="run-progress-main">
+                <div class="stage-meta">
+                  <span id="analysisStageLabel" class="stage-name">Ready</span>
+                  <span id="analysisElapsed" class="stage-time">0.0s</span>
+                </div>
+                <div class="track-bar analysis-progress-track" aria-hidden="true"><div id="analysisProgressFill" class="track-fill"></div></div>
+                <div class="signals">
+                  <span id="evidenceTicker" class="hidden"><b id="evidenceTickerCount">0</b> evidence</span>
+                  <span id="etaBadge" class="hidden"><b id="etaBadgeText">measured stage progress</b></span>
+                  <span id="memT1">VRAM --</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="phaseInsightStrip" class="phase-insight hidden"></div>
+
+            <div id="agentSwarmMap" class="system-activity swarm" data-run-state="idle" data-active-stage="idle" aria-label="Live diagnostic system activity">
+              <div class="system-activity-main">
+                <div class="system-activity-orb" aria-hidden="true">
+                  <span></span>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
+                <div class="system-activity-copy">
+                  <span class="eyebrow">Live system activity</span>
+                  <strong id="swarmActiveLabel">Ready</strong>
+                  <span id="swarmProgressValue">Awaiting a patient narrative.</span>
+                </div>
+                <div class="system-activity-stats" aria-label="Runtime activity summary">
+                  <span><b id="swarmPhaseMetric">--</b> phase</span>
+                  <span><b id="swarmEvidenceMetric">0</b> evidence</span>
+                  <span><b id="swarmProgressMetric">idle</b></span>
+                </div>
+              </div>
+              <div class="system-activity-visual" aria-hidden="true">
+                <span class="system-flow-line"></span>
+                <span class="system-flow-fill"></span>
+                <span class="system-flow-scan"></span>
+                <div class="system-focus-card">
+                  <span class="focus-kicker">Current operation</span>
+                  <strong id="swarmFocusLabel">Idle</strong>
+                  <small id="swarmFocusNote">No active diagnostic task.</small>
+                </div>
+                <div class="system-workers" role="list">
+                  <span class="activity-worker pipeline-step swarm-node" data-stage="INTAKE" role="listitem" data-label="Intake"><i></i><span>Intake</span></span>
+                  <span class="activity-worker pipeline-step swarm-node" data-stage="R2" role="listitem" data-label="Evidence"><i></i><span>Evidence</span></span>
+                  <span class="activity-worker pipeline-step swarm-node" data-stage="DIFFERENTIAL" role="listitem" data-label="Differential"><i></i><span>Differential</span></span>
+                  <span class="activity-worker pipeline-step swarm-node" data-stage="OUTCOME" role="listitem" data-label="Outcome"><i></i><span>Outcome</span></span>
+                  <span class="activity-worker pipeline-step swarm-node" data-stage="VERIFY" role="listitem" data-label="Verify"><i></i><span>Verify</span></span>
+                  <span class="activity-worker pipeline-step swarm-node" data-stage="ACTION" role="listitem" data-label="Action"><i></i><span>Action</span></span>
+                  <span class="activity-worker pipeline-step swarm-node" data-stage="MEMORY" role="listitem" data-label="Memory"><i></i><span>Memory</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div id="analysisActivityStream" class="activity event-ticker" role="status" aria-live="polite">
+              <div class="act muted analysis-activity-item muted">
+                <span class="material-symbols-outlined">radio_button_checked</span>
+                <span>Waiting for a patient narrative.</span>
+                <time>ready</time>
+              </div>
+            </div>
+
+            <div id="candidatePreviewStrip" class="candidate-preview-strip hidden"></div>
+          </div>
+
+          <div class="case-workbench case-activation reasoning-feed" aria-label="Case activation">
+            <div class="case-activation-copy">
+              <span class="material-symbols-outlined" aria-hidden="true">stethoscope</span>
+              <div>
+                <span class="eyebrow">Case input</span>
+                <h2>Patient narrative</h2>
+                <p>Use one concise presentation. The decision artifact stays primary; trace and runtime stay in Details.</p>
+              </div>
+            </div>
+            <div class="quickstart-row" aria-label="Case examples">
+              <button type="button" class="chip on" data-action="set-example" data-example="31-year-old marketing director with profound fatigue, cold intolerance, hoarse voice, hair loss, constipation, weight gain despite low appetite, irregular periods, and low mood.">Endocrine fatigue</button>
+              <button type="button" class="chip" data-action="set-example" data-example="54-year-old woman with crushing substernal chest pain radiating to left arm, diaphoresis, nausea, and anterior ST elevation on ECG.">Cardiac chest pain</button>
+              <button type="button" class="chip" data-action="set-example" data-example="71-year-old man with fever, confusion, hypotension, recent urinary symptoms, lactate elevation, and reduced urine output.">Sepsis pattern</button>
+            </div>
+          </div>
+
+          <div id="chat-scroll-area" class="artifact-slot chat-scroll-area">
+            <div id="messages" class="messages" aria-live="polite" aria-busy="false">
+              <div id="messages-placeholder" class="messages-placeholder">
+                <span class="material-symbols-outlined" aria-hidden="true">clinical_notes</span>
+                <strong>Clinical packet appears here</strong>
+                <p>Ranked differential, safety posture, missing data, and evidence quality render in this artifact slot.</p>
+              </div>
+              <div id="resultPreviewSlot"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+<div id="view-registry" class="workspace view-section" data-view-panel="registry" role="tabpanel" aria-labelledby="sidenav-registry">
+        <div class="view-head">
+          <div>
+            <span class="eyebrow">Case memory</span>
+            <h1>Library</h1>
+            <p>4,820 anonymized cases, k-NN indexed against current prototypes. Filter by family, outcome, or contradiction mass.</p>
+          </div>
+          <div class="actions">
+            <button class="btn-secondary"><span class="material-symbols-outlined">download</span>Export</button>
+            <button class="btn-secondary btn-primary"><span class="material-symbols-outlined">add</span>Ingest cases</button>
+          </div>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat"><span class="l">Indexed cases</span><strong id="reg-case-count">4,820</strong><span class="delta">+184 this week</span></div>
+          <div class="stat"><span class="l">Active prototypes</span><strong>312</strong><span class="delta">+7</span></div>
+          <div class="stat"><span class="l">Avg. confidence</span><strong>0.79</strong><span class="delta">+0.02</span></div>
+          <div class="stat"><span class="l">Flagged for review</span><strong>14</strong><span class="delta dn">+3</span></div>
+        </div>
+
+        <div class="filter-row">
+          <button class="chip on">All families</button>
+          <button class="chip">Tropical viral</button>
+          <button class="chip">Bacterial</button>
+          <button class="chip">Cardio</button>
+          <button class="chip">Neuro</button>
+          <button class="chip">Endocrine</button>
+          <button class="chip"><span class="material-symbols-outlined">filter_alt</span>More filters</button>
+        </div>
+        <div id="case-source-summary" class="filter-row compact-source-summary"></div>
+        <p id="case-policy-label" class="case-policy-note">Only curated real cases are shown here.</p>
+
+        <div id="registry-list" class="case-table">
+          <div class="case-row head"><span>Case</span><span>Presentation</span><span>Family</span><span>Anchor dx</span><span>Outcome</span><span>Conf.</span></div>
+
+          <div class="case-row">
+            <span class="case-id">CS-04812</span>
+            <div class="case-main"><strong>38yo M · Fever 39.5 · day 3</strong><p>Retro-orbital pain, myalgia, torso rash. No bleeding signs.</p></div>
+            <span class="case-fam">Tropical viral</span>
+            <span class="case-cell">Dengue fever</span>
+            <span class="case-cell">Discharged d-7</span>
+            <div><span class="case-conf">0.82</span><div class="conf-bar"><i style="width:82%;"></i></div></div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-id">CS-04811</span>
+            <div class="case-main"><strong>54yo F · Crushing chest pain</strong><p>Diaphoresis, radiating left arm, ECG ST-elevation V2-V4.</p></div>
+            <span class="case-fam" style="background:#fde6ea;color:var(--rr-red);">Cardio</span>
+            <span class="case-cell">Anterior STEMI</span>
+            <span class="case-cell">PCI &lt;90 min</span>
+            <div><span class="case-conf">0.94</span><div class="conf-bar"><i style="width:94%;"></i></div></div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-id">CS-04810</span>
+            <div class="case-main"><strong>71yo M · Confusion + fever</strong><p>Recent UTI, BP 88/52, lactate 4.1, oliguria.</p></div>
+            <span class="case-fam" style="background:#fff3dd;color:var(--rr-amber);">Bacterial</span>
+            <span class="case-cell">Urosepsis</span>
+            <span class="case-cell">ICU · Resolved</span>
+            <div><span class="case-conf amber">0.71</span><div class="conf-bar amber"><i style="width:71%;"></i></div></div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-id">CS-04809</span>
+            <div class="case-main"><strong>27yo F · Sudden severe headache</strong><p>Photophobia, neck stiffness, no rash. CT non-contrast: SAH.</p></div>
+            <span class="case-fam">Neuro</span>
+            <span class="case-cell">Subarachnoid hem.</span>
+            <span class="case-cell">Coiled · stable</span>
+            <div><span class="case-conf">0.88</span><div class="conf-bar"><i style="width:88%;"></i></div></div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-id">CS-04808</span>
+            <div class="case-main"><strong>46yo M · Polyuria, weight loss</strong><p>Random glucose 412, ketones+, pH 7.21, anion gap 22.</p></div>
+            <span class="case-fam" style="background:#eef2f7;color:var(--rr-success);">Endocrine</span>
+            <span class="case-cell">DKA</span>
+            <span class="case-cell">Discharged d-3</span>
+            <div><span class="case-conf">0.91</span><div class="conf-bar"><i style="width:91%;"></i></div></div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-id">CS-04807</span>
+            <div class="case-main"><strong>33yo F · Fever 39 + jaundice</strong><p>Travel rural Sumatra, exposure to flood water. CK 980.</p></div>
+            <span class="case-fam">Tropical viral</span>
+            <span class="case-cell">Leptospirosis</span>
+            <span class="case-cell">Doxycycline · OK</span>
+            <div><span class="case-conf amber">0.68</span><div class="conf-bar amber"><i style="width:68%;"></i></div></div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-id">CS-04806</span>
+            <div class="case-main"><strong>62yo M · Acute dyspnea</strong><p>Bilateral crackles, JVD, BNP 1840, EF 28%.</p></div>
+            <span class="case-fam" style="background:#fde6ea;color:var(--rr-red);">Cardio</span>
+            <span class="case-cell">Acute decompensated HF</span>
+            <span class="case-cell">Diuresis · stable</span>
+            <div><span class="case-conf">0.86</span><div class="conf-bar"><i style="width:86%;"></i></div></div>
+          </div>
+        </div>
+
+        <div class="lib-grid">
+          <div class="map-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <h3>Embedding map · current cohort</h3>
+              <span class="eyebrow" style="color:var(--rr-muted);">UMAP · 2D · 4,820 pts</span>
+            </div>
+            <svg class="map-svg" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet">
+              
+              <circle cx="160" cy="100" r="58" fill="rgba(33,71,184,.06)" stroke="rgba(33,71,184,.22)" stroke-dasharray="3 4"></circle>
+              <circle cx="430" cy="80" r="50" fill="rgba(169,58,72,.06)" stroke="rgba(169,58,72,.22)" stroke-dasharray="3 4"></circle>
+              <circle cx="350" cy="200" r="55" fill="rgba(82,99,122,.06)" stroke="rgba(82,99,122,.22)" stroke-dasharray="3 4"></circle>
+              <circle cx="120" cy="220" r="42" fill="rgba(155,101,30,.07)" stroke="rgba(155,101,30,.22)" stroke-dasharray="3 4"></circle>
+              
+              <g fill="#255f9f" opacity=".75">
+                <circle cx="155" cy="95" r="3"></circle><circle cx="170" cy="110" r="3"></circle><circle cx="145" cy="115" r="3"></circle><circle cx="180" cy="85" r="3"></circle><circle cx="160" cy="80" r="3"></circle><circle cx="135" cy="95" r="3"></circle><circle cx="195" cy="105" r="3"></circle><circle cx="150" cy="125" r="3"></circle><circle cx="175" cy="120" r="3"></circle>
+              </g>
+              <g fill="#a93a48" opacity=".75">
+                <circle cx="425" cy="70" r="3"></circle><circle cx="440" cy="90" r="3"></circle><circle cx="410" cy="80" r="3"></circle><circle cx="445" cy="65" r="3"></circle><circle cx="425" cy="100" r="3"></circle><circle cx="455" cy="85" r="3"></circle>
+              </g>
+              <g fill="#52637a" opacity=".75">
+                <circle cx="345" cy="195" r="3"></circle><circle cx="360" cy="210" r="3"></circle><circle cx="335" cy="200" r="3"></circle><circle cx="370" cy="190" r="3"></circle><circle cx="350" cy="220" r="3"></circle><circle cx="325" cy="215" r="3"></circle>
+              </g>
+              <g fill="#9b651e" opacity=".75">
+                <circle cx="115" cy="215" r="3"></circle><circle cx="130" cy="225" r="3"></circle><circle cx="105" cy="220" r="3"></circle><circle cx="125" cy="210" r="3"></circle>
+              </g>
+              
+              <circle cx="170" cy="110" r="6" fill="none" stroke="#173f70" stroke-width="2"></circle>
+              <text x="180" y="135" font-family="JetBrains Mono" font-size="9" fill="#173f70">CS-04812 · selected</text>
+              
+              <text x="160" y="40" font-family="Inter" font-weight="700" font-size="11" fill="#255f9f" text-anchor="middle">Tropical viral</text>
+              <text x="430" y="20" font-family="Inter" font-weight="700" font-size="11" fill="#a93a48" text-anchor="middle">Cardio</text>
+              <text x="350" y="265" font-family="Inter" font-weight="700" font-size="11" fill="#52637a" text-anchor="middle">Endocrine</text>
+              <text x="120" y="265" font-family="Inter" font-weight="700" font-size="11" fill="#9b651e" text-anchor="middle">Bacterial</text>
+            </svg>
+            <div style="display:flex;gap:18px;flex-wrap:wrap;">
+              <div class="legend-row"><span class="legend-dot" style="background:#255f9f;"></span>Tropical viral · 1,142</div>
+              <div class="legend-row"><span class="legend-dot" style="background:#a93a48;"></span>Cardio · 980</div>
+              <div class="legend-row"><span class="legend-dot" style="background:#52637a;"></span>Endocrine · 612</div>
+              <div class="legend-row"><span class="legend-dot" style="background:#9b651e;"></span>Bacterial · 845</div>
+            </div>
+          </div>
+
+          <div class="lib-side">
+            <div class="map-card" style="min-height:auto;">
+              <h3 id="det-name">Selected · CS-04812</h3>
+              <div id="reg-detail-empty" class="drawer-row"><span>Select a row</span><strong>Details ready</strong></div>
+              <div id="reg-detail-content" class="hidden">
+                <div class="drawer-row"><span id="det-id">k-nearest</span><strong id="det-source">9 cases · cosine 0.71</strong></div>
+                <div class="drawer-row"><span>Policy</span><strong id="det-policy">Curated packet</strong></div>
+                <div class="drawer-row"><span>Anchor</span><strong id="det-hypothesis">Dengue serotype-2</strong></div>
+                <div class="drawer-row"><span id="det-conf-score">Confidence: 82%</span><strong>selected</strong></div>
+                <p id="det-narrative" style="margin-top:10px;font-size:12.5px;color:var(--rr-muted);line-height:1.5;">Open a curated case to load its narrative.</p>
+                <button type="button" class="btn-secondary" data-action="load-case-to-reasoning" style="margin-top:12px;">Load to reasoning</button>
+              </div>
+            </div>
+            <div class="map-card" style="min-height:auto;">
+              <h3>Provenance</h3>
+              <p style="margin:0;font-size:12.5px;color:var(--rr-muted);line-height:1.5;">All cases anonymized at ingest (HIPAA-safe harbor). Embeddings derived locally; raw narratives never leave site. Audit log: <span style="font-family:var(--rr-font-mono);color:var(--rr-blue);">8,492 entries</span>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div id="view-schedule" class="workspace view-section" data-view-panel="schedule" role="tabpanel" aria-labelledby="sidenav-schedule">
+        <div class="view-head">
+          <div>
+            <span class="eyebrow">Continual learning</span>
+            <h1>Learning loop</h1>
+            <p>Prototypes update via EMA centroid (α=0.05). Splits and merges enter the queue when contradiction mass crosses 0.18.</p>
+          </div>
+          <div class="actions">
+            <button class="btn-secondary"><span class="material-symbols-outlined">history</span>Run history</button>
+            <button class="btn-secondary" style="background:var(--rr-blue);color:#fff;border-color:transparent;"><span class="material-symbols-outlined">play_arrow</span>Trigger refresh</button>
+          </div>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat"><span class="l">Prototypes</span><strong>312</strong><span class="delta">+7 this cycle</span></div>
+          <div class="stat"><span class="l">Avg. cohesion</span><strong>0.74</strong><span class="delta">+0.01</span></div>
+          <div class="stat"><span class="l">Pending reviews</span><strong>9</strong><span class="delta dn">+2</span></div>
+          <div class="stat"><span class="l">Last refresh</span><strong>14m ago</strong><span class="delta">on schedule</span></div>
+        </div>
+
+        <h3 style="margin:18px 0 6px;font-size:14px;font-weight:850;">Top prototypes by activity</h3>
+        <div class="proto-grid">
+          <div class="proto-card">
+            <div class="proto-head">
+              <div><div class="proto-name">Dengue serotype-2</div><div class="proto-fam">Tropical viral</div></div>
+              <span class="proto-mass">n=184</span>
+            </div>
+            <div class="proto-bar"><i style="width:82%;"></i></div>
+            <div class="proto-meta"><span>Cohesion <b>0.81</b></span><span class="delta">+0.03 this week</span></div>
+          </div>
+          <div class="proto-card">
+            <div class="proto-head">
+              <div><div class="proto-name">Anterior STEMI</div><div class="proto-fam">Cardio</div></div>
+              <span class="proto-mass">n=210</span>
+            </div>
+            <div class="proto-bar"><i style="width:91%;background:#a93a48;"></i></div>
+            <div class="proto-meta"><span>Cohesion <b>0.91</b></span><span class="delta">+0.01</span></div>
+          </div>
+          <div class="proto-card">
+            <div class="proto-head">
+              <div><div class="proto-name">DKA · adult</div><div class="proto-fam">Endocrine</div></div>
+              <span class="proto-mass">n=148</span>
+            </div>
+            <div class="proto-bar"><i style="width:86%;background:#52637a;"></i></div>
+            <div class="proto-meta"><span>Cohesion <b>0.86</b></span><span class="delta">+0.02</span></div>
+          </div>
+          <div class="proto-card">
+            <div class="proto-head">
+              <div><div class="proto-name">Urosepsis · elderly</div><div class="proto-fam">Bacterial</div></div>
+              <span class="proto-mass">n=121</span>
+            </div>
+            <div class="proto-bar"><i style="width:68%;background:#9b651e;"></i></div>
+            <div class="proto-meta"><span>Cohesion <b>0.68</b></span><span class="delta dn" style="color:var(--rr-amber);">−0.02</span></div>
+          </div>
+          <div class="proto-card">
+            <div class="proto-head">
+              <div><div class="proto-name">SAH · sudden</div><div class="proto-fam">Neuro</div></div>
+              <span class="proto-mass">n=92</span>
+            </div>
+            <div class="proto-bar"><i style="width:78%;"></i></div>
+            <div class="proto-meta"><span>Cohesion <b>0.78</b></span><span class="delta">+0.04</span></div>
+          </div>
+          <div class="proto-card">
+            <div class="proto-head">
+              <div><div class="proto-name">Leptospirosis · tropical</div><div class="proto-fam">Tropical viral</div></div>
+              <span class="proto-mass">n=64</span>
+            </div>
+            <div class="proto-bar"><i style="width:62%;"></i></div>
+            <div class="proto-meta"><span>Cohesion <b>0.62</b></span><span class="delta dn" style="color:var(--rr-red);">−0.05</span></div>
+          </div>
+        </div>
+
+        <div class="learn-grid">
+          <div class="queue-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <h3 style="margin:0;font-size:14px;font-weight:850;">Review queue · 9 pending</h3>
+              <span class="eyebrow" style="color:var(--rr-muted);">Clinician sign-off required</span>
+            </div>
+            <div class="queue-row">
+              <span class="queue-pill split">Split</span>
+              <div><strong>Leptospirosis · tropical → 2 sub-prototypes</strong><p>Contradiction mass 0.21. Suggested split by CK level (&gt;2× ULN vs ≤).</p></div>
+              <time>14m ago</time>
+            </div>
+            <div class="queue-row">
+              <span class="queue-pill merge">Merge</span>
+              <div><strong>Influenza-A drift · 2 prototypes → 1</strong><p>Cosine drift 0.94. Centroids converged; suggested merge.</p></div>
+              <time>1h ago</time>
+            </div>
+            <div class="queue-row">
+              <span class="queue-pill new">New</span>
+              <div><strong>Mpox · clade II</strong><p>11 cases clustered outside any prototype halo. New prototype proposed.</p></div>
+              <time>3h ago</time>
+            </div>
+            <div class="queue-row">
+              <span class="queue-pill split">Split</span>
+              <div><strong>Pediatric DKA vs adult DKA</strong><p>Outcome trajectories diverge after day 1; split reduces variance 38%.</p></div>
+              <time>6h ago</time>
+            </div>
+            <div class="queue-row">
+              <span class="queue-pill merge">Merge</span>
+              <div><strong>Urosepsis · F vs M</strong><p>No outcome difference at p=0.92; merge candidate.</p></div>
+              <time>1d ago</time>
+            </div>
+          </div>
+
+          <div class="queue-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <h3 style="margin:0;font-size:14px;font-weight:850;">Drift signals</h3>
+              <span class="eyebrow" style="color:var(--rr-muted);">last 30 days</span>
+            </div>
+            <div class="spark-row">
+              <span>Cohesion · global</span>
+              <svg class="spark" viewBox="0 0 200 32" preserveAspectRatio="none"><path class="area" d="M0 22 L20 18 L40 20 L60 14 L80 16 L100 12 L120 14 L140 10 L160 12 L180 8 L200 10 L200 32 L0 32 Z"></path><path d="M0 22 L20 18 L40 20 L60 14 L80 16 L100 12 L120 14 L140 10 L160 12 L180 8 L200 10"></path></svg>
+              <span class="spark-val">0.74</span>
+            </div>
+            <div class="spark-row">
+              <span>Contradiction</span>
+              <svg class="spark" viewBox="0 0 200 32" preserveAspectRatio="none"><path class="area" style="fill:rgba(155,101,30,.13);" d="M0 8 L20 12 L40 10 L60 14 L80 12 L100 16 L120 14 L140 18 L160 16 L180 20 L200 18 L200 32 L0 32 Z"></path><path style="stroke:#9b651e;" d="M0 8 L20 12 L40 10 L60 14 L80 12 L100 16 L120 14 L140 18 L160 16 L180 20 L200 18"></path></svg>
+              <span class="spark-val">0.14</span>
+            </div>
+            <div class="spark-row">
+              <span>Embedding drift</span>
+              <svg class="spark" viewBox="0 0 200 32" preserveAspectRatio="none"><path class="area" d="M0 18 L20 16 L40 14 L60 16 L80 12 L100 14 L120 10 L140 12 L160 8 L180 10 L200 6 L200 32 L0 32 Z"></path><path d="M0 18 L20 16 L40 14 L60 16 L80 12 L100 14 L120 10 L140 12 L160 8 L180 10 L200 6"></path></svg>
+              <span class="spark-val">+0.08</span>
+            </div>
+            <div class="spark-row">
+              <span>Query hygiene</span>
+              <svg class="spark" viewBox="0 0 200 32" preserveAspectRatio="none"><path class="area" style="fill:rgba(82,99,122,.13);" d="M0 14 L20 12 L40 10 L60 8 L80 10 L100 6 L120 8 L140 6 L160 4 L180 6 L200 4 L200 32 L0 32 Z"></path><path style="stroke:#52637a;" d="M0 14 L20 12 L40 10 L60 8 L80 10 L100 6 L120 8 L140 6 L160 4 L180 6 L200 4"></path></svg>
+              <span class="spark-val">0.86</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div id="view-overview" class="workspace view-section" data-view-panel="overview" role="tabpanel" aria-labelledby="sidenav-overview">
+        <div class="view-head">
+          <div>
+            <span class="eyebrow">Runtime</span>
+            <h1>System</h1>
+            <p>Local-first inference, safety gates, and pipeline telemetry. All metrics from on-device runtime.</p>
+          </div>
+          <div class="actions">
+            <button class="btn-secondary"><span class="material-symbols-outlined">refresh</span>Refresh</button>
+            <button class="btn-secondary"><span class="material-symbols-outlined">cloud_sync</span>Sync gateway</button>
+          </div>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat"><span class="l">Engine</span><strong id="overview-engine-mode" style="font-size:14px;">local qwen</strong><span id="overview-llm-status" class="delta">ready</span></div>
+          <div class="stat"><span class="l">Avg. latency</span><strong id="overview-latency">--</strong><span id="overview-llm-caption" class="delta">runtime probe</span></div>
+          <div class="stat"><span class="l">Library cases</span><strong id="overview-case-count">--</strong><span class="delta">indexed</span></div>
+          <div class="stat"><span class="l">Gate violations</span><strong>0</strong><span class="delta">7-day clean</span></div>
+        </div>
+        <div class="filter-row compact-source-summary">
+          <span class="source-chip is-policy">Operation: <b id="overview-operation-mode">local core</b></span>
+          <span class="source-chip is-policy">Profile: <b id="overview-runtime-profile">auto</b></span>
+        </div>
+
+        <div class="sys-grid">
+          <div class="sys-card">
+            <h3 style="margin:0;font-size:14px;font-weight:850;">Hardware</h3>
+            <div class="gauge-row"><span class="sys-label">VRAM</span><div class="gauge"><i class="ok" style="width:70%;"></i></div><span class="sys-val">4.2 / 6.0 GB</span></div>
+            <div class="gauge-row"><span class="sys-label">RAM</span><div class="gauge"><i class="ok" style="width:48%;"></i></div><span class="sys-val">7.7 / 16 GB</span></div>
+            <div class="gauge-row"><span class="sys-label">CPU</span><div class="gauge"><i style="width:32%;"></i></div><span class="sys-val">32 %</span></div>
+            <div class="gauge-row"><span class="sys-label">GPU temp</span><div class="gauge"><i class="warn" style="width:62%;"></i></div><span class="sys-val">68 °C</span></div>
+            <div class="gauge-row"><span class="sys-label">Disk · model store</span><div class="gauge"><i class="ok" style="width:38%;"></i></div><span class="sys-val">12.4 / 32 GB</span></div>
+          </div>
+
+          <div class="sys-card">
+            <h3 style="margin:0;font-size:14px;font-weight:850;">Pipeline stage timings</h3>
+            <div class="gauge-row"><span class="sys-label">Intake</span><div class="gauge"><i class="ok" style="width:8%;"></i></div><span class="sys-val">0.4 s</span></div>
+            <div class="gauge-row"><span class="sys-label">Evidence retrieval</span><div class="gauge"><i style="width:32%;"></i></div><span class="sys-val">1.7 s</span></div>
+            <div class="gauge-row"><span class="sys-label">Differential</span><div class="gauge"><i style="width:40%;"></i></div><span class="sys-val">2.1 s</span></div>
+            <div class="gauge-row"><span class="sys-label">Outcome sim.</span><div class="gauge"><i style="width:24%;"></i></div><span class="sys-val">1.5 s</span></div>
+            <div class="gauge-row"><span class="sys-label">Verification gate</span><div class="gauge"><i class="warn" style="width:42%;"></i></div><span class="sys-val">2.2 s</span></div>
+            <div class="gauge-row"><span class="sys-label">Action plan</span><div class="gauge"><i style="width:18%;"></i></div><span class="sys-val">0.9 s</span></div>
+            <div class="gauge-row"><span class="sys-label">Memory checkpoint</span><div class="gauge"><i class="ok" style="width:14%;"></i></div><span class="sys-val">0.7 s</span></div>
+          </div>
+
+          <div class="sys-card">
+            <h3 style="margin:0;font-size:14px;font-weight:850;">Safety gates · last 1,000 cases</h3>
+            <div class="gauge-row"><span class="sys-label">Must-not-miss raised</span><div class="gauge"><i class="warn" style="width:18%;"></i></div><span class="sys-val">182</span></div>
+            <div class="gauge-row"><span class="sys-label">Contradiction &gt; 0.18</span><div class="gauge"><i class="warn" style="width:9%;"></i></div><span class="sys-val">94</span></div>
+            <div class="gauge-row"><span class="sys-label">Evidence &lt; 5 items</span><div class="gauge"><i class="ok" style="width:4%;"></i></div><span class="sys-val">38</span></div>
+            <div class="gauge-row"><span class="sys-label">Out-of-distribution</span><div class="gauge"><i class="crit" style="width:2%;"></i></div><span class="sys-val">17</span></div>
+            <div class="gauge-row"><span class="sys-label">Override by clinician</span><div class="gauge"><i style="width:11%;"></i></div><span class="sys-val">112</span></div>
+          </div>
+
+          <div class="sys-card">
+            <h3 style="margin:0;font-size:14px;font-weight:850;">Routing · 24 h</h3>
+            <div class="gauge-row"><span class="sys-label">Local · Fast</span><div class="gauge"><i class="ok" style="width:42%;"></i></div><span class="sys-val">62 sessions</span></div>
+            <div class="gauge-row"><span class="sys-label">Local · Thinking</span><div class="gauge"><i class="ok" style="width:55%;"></i></div><span class="sys-val">81 sessions</span></div>
+            <div class="gauge-row"><span class="sys-label">Local · Deep</span><div class="gauge"><i style="width:14%;"></i></div><span class="sys-val">21 sessions</span></div>
+            <div class="gauge-row"><span class="sys-label">Cloud reference</span><div class="gauge"><i class="warn" style="width:6%;"></i></div><span class="sys-val">9 sessions</span></div>
+            <div class="gauge-row"><span class="sys-label">Offline queued</span><div class="gauge"><i class="ok" style="width:0%;"></i></div><span class="sys-val">0</span></div>
+          </div>
+        </div>
+
+        <div class="sys-card" style="margin-top:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <h3 style="margin:0;font-size:14px;font-weight:850;">Event log · live</h3>
+            <span class="eyebrow" style="color:var(--rr-muted);">tail · last 12 events</span>
+          </div>
+          <div class="log">
+            <div class="log-row"><time>14:32:08</time><span class="lvl ok">ok</span><span>memory.checkpoint · prototype Dengue-S2 · centroid Δ 0.018 · n=184</span></div>
+            <div class="log-row"><time>14:32:01</time><span class="lvl info">info</span><span>session CS-04812 · Local · Thinking · 7.4 s · conf 0.82</span></div>
+            <div class="log-row"><time>14:31:54</time><span class="lvl warn">warn</span><span>verify.gate · must-not-miss raised · Acute leptospirosis · 0.41</span></div>
+            <div class="log-row"><time>14:31:42</time><span class="lvl ok">ok</span><span>retrieve.evidence · 14 items · hygiene 0.86</span></div>
+            <div class="log-row"><time>14:31:34</time><span class="lvl info">info</span><span>intake.parse · 6 features · hash 0x9af3</span></div>
+            <div class="log-row"><time>14:28:11</time><span class="lvl ok">ok</span><span>learn.queue · merge proposed · Influenza-A drift · cosine 0.94</span></div>
+            <div class="log-row"><time>14:24:47</time><span class="lvl info">info</span><span>session CS-04811 · Local · Fast · 3.1 s · conf 0.94</span></div>
+            <div class="log-row"><time>14:18:02</time><span class="lvl warn">warn</span><span>route.cloud · token budget 22% · gateway latency 312 ms</span></div>
+            <div class="log-row"><time>14:12:55</time><span class="lvl err">err</span><span>retrieve.evidence · timeout @ source Lancet · retry succeeded</span></div>
+            <div class="log-row"><time>14:08:21</time><span class="lvl ok">ok</span><span>safety.audit · 1,000-case sweep · 0 violations</span></div>
+            <div class="log-row"><time>14:01:09</time><span class="lvl info">info</span><span>memory.refresh · 312 prototypes · cohesion 0.74</span></div>
+            <div class="log-row"><time>13:54:30</time><span class="lvl ok">ok</span><span>engine.health · qwen3.5-4b-q4 · vram 4.2GB · ok</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    
+    
+    <aside id="evidenceStatePanel" class="drawer">
+      <div class="drawer-head">
+        <div>
+          <h2>Context</h2>
+          <p>Evidence | Runtime | Trace</p>
+        </div>
+        <button id="detailsDrawerClose" class="composer-icon" type="button" data-action="close-details" aria-label="Close details"><span class="material-symbols-outlined" style="font-size:18px;">close</span></button>
+      </div>
+      <div class="tab-row" role="tablist" aria-label="Details">
+        <button class="tab active" type="button" data-action="switch-panel-tab" data-panel-tab="evidence">Evidence</button>
+        <button class="tab" type="button" data-action="switch-panel-tab" data-panel-tab="runtime">Runtime</button>
+        <button class="tab" type="button" data-action="switch-panel-tab" data-panel-tab="trace">Trace</button>
+      </div>
+      <div class="drawer-body">
+        <div class="drawer-section">
+          <h4>Evidence grounding</h4>
+          <p>Source support and retrieval traces appear here once the agent attaches evidence to a candidate diagnosis.</p>
+        </div>
+        <div class="drawer-section">
+          <h4>Coverage</h4>
+          <div class="drawer-row"><span>Evidence items</span><strong id="evCoverageCount">0</strong></div>
+          <div class="drawer-row"><span>Contradiction mass</span><strong id="evContradiction">-</strong></div>
+          <div class="drawer-row"><span>Query hygiene</span><strong id="evQueryHygiene">-</strong></div>
+        </div>
+        <div class="drawer-section">
+          <h4>Runtime controls</h4>
+          <label class="drawer-label">Operation
+            <select id="operationModeSelect">
+              <option value="local_core_with_online_r2">Local core + online R2</option>
+              <option value="local_core">Local core only</option>
+              <option value="cloud_reference">Cloud reference</option>
+            </select>
+          </label>
+          <label class="drawer-label">Profile
+            <select id="runtimeProfileSelect">
+              <option value="auto">Auto</option>
+              <option value="compact_4gb">Compact 4GB</option>
+              <option value="standard_6gb">Standard 6GB</option>
+            </select>
+          </label>
+        </div>
+        <div class="drawer-section">
+          <h4>Clinical stage tracker</h4>
+          <div id="pipelineTimeline" class="timeline-stack"></div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+</div>
+
+
+
+<div id="composerShell" class="composer-shell">
+  <div class="composer">
+    <div class="composer-row">
+      <button id="stopButton" class="composer-icon hidden" type="button" data-action="stop-analysis" disabled aria-label="Cancel analysis"><span class="material-symbols-outlined" style="font-size:18px;">stop_circle</span></button>
+      <textarea id="userInput" placeholder="Describe the patient presentation..." maxlength="2000"></textarea>
+      <button id="mobileStopButton" class="composer-icon hidden" type="button" data-action="stop-analysis" disabled aria-label="Cancel analysis"><span class="material-symbols-outlined" style="font-size:18px;">stop_circle</span></button>
+          <button id="sendButton" class="composer-send" type="button" data-action="send-message"><span class="material-symbols-outlined" aria-hidden="true">send</span><span class="send-label">Send</span></button>
+    </div>
+    <div class="composer-meta">
+          <span>Enter to send - Shift+Enter newline - <b id="composerModeLabel">Thinking</b></span>
+      <span><span id="charCounter"></span> / 2000</span>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <span id="footer-llm-status" class="ok">Inference: ready</span>
+  <span style="color:var(--rr-line-strong);">|</span>
+  <span id="footer-latency">Transport RTT: --</span>
+  <span style="color:var(--rr-line-strong);">|</span>
+  <span id="footer-vram">VRAM: --</span>
+</footer>
+
+<div id="detailsDrawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+<div id="caseLabBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+<aside id="caseLabDrawer" class="case-lab-drawer" aria-label="Generated case lab">
+  <div class="drawer-head">
+    <div>
+      <h2>Case lab</h2>
+      <p>Generated protocols and learning candidates</p>
+    </div>
+    <button class="composer-icon" type="button" data-action="close-case-lab" aria-label="Close case lab"><span class="material-symbols-outlined" style="font-size:18px;">close</span></button>
+  </div>
+  <div id="caseLabContent" class="drawer-body"></div>
+</aside>
+
+<div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<script src="/static/app.js?v=17.0"></script>
+</body>
+</html>
+

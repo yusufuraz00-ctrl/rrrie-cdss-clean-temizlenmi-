@@ -1,0 +1,40 @@
+{
+  "_comment": "Arbitration adjustment policy. Numeric caps and penalties — edit here without touching source code.",
+  "state_fit_hard_cap": {
+    "severe_mismatch_state_fit_max": 0.2,
+    "severe_mismatch_contradiction_min": 0.38,
+    "severe_mismatch_explanation_debt_min": 0.58,
+    "must_not_miss_score_cap": 0.45,
+    "default_score_multiplier": 0.78,
+    "default_score_absolute_cap": 0.34
+  },
+  "state_mismatch_penalty": {
+    "catastrophic_penalty": 0.14,
+    "catastrophic_state_fit_max": 0.2,
+    "cross_system_penalty_primary": 0.12,
+    "cross_system_state_fit_max": 0.28,
+    "cross_system_explanation_debt_min": 0.55,
+    "benign_intrusion_penalty": 0.08,
+    "benign_intrusion_state_fit_max": 0.34,
+    "benign_intrusion_contradiction_min": 0.2,
+    "cross_system_penalty_secondary": 0.08,
+    "secondary_cross_system_state_fit_max": 0.22,
+    "secondary_cross_system_contradiction_min": 0.26
+  },
+  "anchor_lock_penalty": {
+    "state_fit_weight": 0.62,
+    "contradiction_weight": 0.22,
+    "explanation_debt_weight": 0.16,
+    "pass_state_fit_min": 0.34,
+    "pass_contradiction_max": 0.32,
+    "tiers": [
+      {"state_gap_min": 0.22, "contradiction_gap_min": 0.08, "penalty": 0.14},
+      {"state_gap_min": 0.16, "contradiction_gap_min": 0.04, "penalty": 0.08}
+    ]
+  },
+  "sibling_dedup": {
+    "overlap_threshold": 0.6,
+    "absorb_bonus_per_sibling": 0.02,
+    "absorb_bonus_cap": 0.06
+  }
+}

@@ -1,0 +1,348 @@
+﻿{
+  "suite": "stress26",
+  "description": "26 highly complex zebra/boundary cases with 1 baseline control case for stress testing autonomy and accuracy.",
+  "cases": [
+    {
+      "case_id": "control_appendicitis_01",
+      "title": "Control Case: Typical Appendicitis",
+      "difficulty": 2,
+      "disease_family": "surgical_abdomen",
+      "note": "Baseline calibration case.",
+      "patient_text": "20 year old male with 1 day of periumbilical pain radiating to right lower quadrant, nausea, and vomiting. Pulse 105, temp 38.0. Rebound tenderness positive.",
+      "expectations": {
+        "keyword_hits": ["appendicitis", "surgical abdomen", "right lower quadrant"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["surgical", "abdominal imaging"]
+      }
+    },
+    {
+      "case_id": "ovarian_torsion_trap_02",
+      "title": "Ovarian Torsion Masked as Appendicitis",
+      "difficulty": 8,
+      "disease_family": "gynecologic_emergency",
+      "note": "RLQ pain but sudden onset and highly intermittent, requiring pelvic US.",
+      "patient_text": "24 year old female suddenly woke up with sharp, stabbing right lower quadrant pain. It is severe, completely sudden, not preceded by periumbilical pain. She vomited twice. Afebrile. Pulse 110.",
+      "expectations": {
+        "keyword_hits": ["ovarian torsion", "adnexal torsion", "pelvic emergency"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["pelvic ultrasound", "gynecology"]
+      }
+    },
+    {
+      "case_id": "nms_psych_trap_03",
+      "title": "Neuroleptic Malignant Syndrome Trap",
+      "difficulty": 9,
+      "disease_family": "toxicologic_critical",
+      "note": "Fever and rigidity in psych patient.",
+      "patient_text": "35 year old male with schizophrenia brought from psych ward. Very stiff, 'lead pipe' rigidity, sweating profusely. Temperature 40.5 C, heart rate 140, fluctuating blood pressure. Recently started haloperidol injection.",
+      "expectations": {
+        "keyword_hits": ["neuroleptic malignant syndrome", "nms", "rigidity hyperthermia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["cooling", "stop antipsychotic"]
+      }
+    },
+    {
+      "case_id": "brugada_syncope_04",
+      "title": "Brugada Syndrome Masked as Simple Syncope",
+      "difficulty": 10,
+      "disease_family": "arrhythmia_critical",
+      "note": "Young male sudden syncope with fever.",
+      "patient_text": "28 year old male fainted suddenly while having a fever of 38.9 C. Witnesses say he dropped without warning, no seizure activity. Now awake but ECG shows coved ST elevation in V1-V2.",
+      "expectations": {
+        "keyword_hits": ["brugada", "ventricular arrhythmia", "cardiac syncope"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["cardiology", "defibrillator evaluation", "ecg"]
+      }
+    },
+    {
+      "case_id": "thyroid_storm_tr_05",
+      "title": "Tiroid Firtinasi ve Psikoz",
+      "difficulty": 9,
+      "disease_family": "endocrine_critical",
+      "note": "Turkish hyperthyroid trap.",
+      "patient_text": "32 yasinda kadin, aniden baslayan asiri sinirlilik, terleme, ishal ve carpinti ile acile getirildi. Tansiyon 160/70, nabiz 165, ates 39.5. Gozleri firtlamis gibi bakiyor (ekzoftalmi) ve surekli bagiriyor. Boynunda sislik var.",
+      "expectations": {
+        "keyword_hits": ["thyroid storm", "thyrotoxic crisis", "thyrotoxicosis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "blocked_hits": ["aspirin", "haloperidol only"],
+        "required_hits": ["beta", "thionamide", "endocrine"]
+      }
+    },
+    {
+      "case_id": "sah_neck_tension_06",
+      "title": "SAH Masquerading as Neck Strain",
+      "difficulty": 9,
+      "disease_family": "intracranial_hemorrhage",
+      "note": "Thunderclap but located in neck, missed as musculoskeletal.",
+      "patient_text": "45 year old man was lifting weights and felt a sudden 'snap' and explosive pain in the back of his neck radiating to his head. He vomited once. ED doc thinks it's a muscle strain. Blood pressure 180/100, pulse 95.",
+      "expectations": {
+        "keyword_hits": ["subarachnoid hemorrhage", "thunderclap", "aneurysmal bleed"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct head", "neurosurgery", "lumbar puncture"]
+      }
+    },
+    {
+      "case_id": "aortic_dissection_renal_tr_07",
+      "title": "Bobrek Tasi Sanilan Aort Diseksiyonu",
+      "difficulty": 10,
+      "disease_family": "vascular_critical",
+      "note": "Dissection radiating to flank mimicking colic.",
+      "patient_text": "55 yasinda hipertansif erkek, aniden baslayan ve yirtilir gibi olan sol yan/bel agrisi ile geldi. Idrarda kan yok, ancak agrisi dayanilmaz. Sol bacak biraz soguk. EKG normal.",
+      "expectations": {
+        "keyword_hits": ["aortic dissection", "acute aortic syndrome", "renal artery involvement"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "blocked_hits": ["heparin", "nsaids"],
+        "required_hits": ["cta abdomen", "vascular surgery"]
+      }
+    },
+    {
+      "case_id": "massive_pe_syncope_sole_08",
+      "title": "Massive PE Presenting Only With Syncope",
+      "difficulty": 8,
+      "disease_family": "cardiopulmonary_critical",
+      "note": "No classic chest pain, just shock and fainting.",
+      "patient_text": "60 year old female passed out in the bathroom. Paramedics found her with pulse 130, blood pressure 80/50, respiratory rate 28. Her oxygen sits at 85%. Lungs are completely clear. Recent hip replacement 2 weeks ago.",
+      "expectations": {
+        "keyword_hits": ["pulmonary embolism", "obstructive risk", "massive pe"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["ct pulmonary angiography", "anticoagulation", "pe pathway"]
+      }
+    },
+    {
+      "case_id": "ectopic_shoulder_pain_09",
+      "title": "Ruptured Ectopic with Referred Shoulder Pain",
+      "difficulty": 9,
+      "disease_family": "obstetric_critical",
+      "note": "Kehr's sign in reproductive age.",
+      "patient_text": "26 year old female fainted. She is pale, blood pressure 70/40, pulse 140. She complains mostly of left shoulder pain but her abdomen is diffusely tender. Last menstrual period was 7 weeks ago.",
+      "expectations": {
+        "keyword_hits": ["ectopic pregnancy", "ruptured ectopic", "hemoperitoneum", "pregnancy related shock"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["pelvic ultrasound", "ob gyn", "resuscitation"]
+      }
+    },
+    {
+      "case_id": "epidural_abscess_sciatica_10",
+      "title": "Epidural Abscess Masquerading as Sciatica",
+      "difficulty": 9,
+      "disease_family": "infectious_spinal_emergency",
+      "note": "Fever + back pain + leg weakness.",
+      "patient_text": "50 year old diabetic IV drug user with back pain radiating down one leg. 'Sciatica' for a week, but today he can't pee and has a fever of 39 C. His legs feel heavy.",
+      "expectations": {
+        "keyword_hits": ["epidural abscess", "spinal infection", "cord compression"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["spine mri", "neurosurgery", "broad spectrum antibiotics"]
+      }
+    },
+    {
+      "case_id": "myxedema_stroke_tr_11",
+      "title": "Inme Sanilan Miksodem KomasÄ±",
+      "difficulty": 9,
+      "disease_family": "endocrine_critical",
+      "note": "Hypothermia and bradycardia with obtundation.",
+      "patient_text": "73 yasinda kadin, bilinci kapali bulundu. Kis gunu isitilmayan bir odada kalmis. Yuzu sis (periorbital odem), nabiz 35, vucut isisi 32 C. Tiroid bezi ameliyati oykusu var.",
+      "expectations": {
+        "keyword_hits": ["myxedema coma", "severe hypothyroidism", "hypothyroid crisis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["thyroid hormone", "warming", "hydrocortisone"]
+      }
+    },
+    {
+      "case_id": "adrenal_crisis_gastro_12",
+      "title": "Adrenal Crisis Masked as GI Bug",
+      "difficulty": 8,
+      "disease_family": "endocrine_critical",
+      "note": "Steroid noncompliance leading to shock.",
+      "patient_text": "45 year old man vomiting for 2 days. He looks profoundly dehydrated, tanned skin, BP 76/40, HR 125. Na is 120, K is 6.5. He takes hydrocortisone for Addison's but ran out 4 days ago.",
+      "expectations": {
+        "keyword_hits": ["adrenal crisis", "adrenal insufficiency", "shock endocrine"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["steroids", "fluids"]
+      }
+    },
+    {
+      "case_id": "necrotizing_fasciitis_normal_leg_13",
+      "title": "Necrotizing Fasciitis with Normal Looking Skin",
+      "difficulty": 10,
+      "disease_family": "infectious_critical",
+      "note": "Pain out of proportion.",
+      "patient_text": "58 year old diabetic male complains of agonizing, screaming pain in his right calf after a minor scrape. The skin looks almost normal, maybe slightly red, but the pain is unmanageable with morphine. Pulse 130, BP 85/50, fever 39.2 C.",
+      "expectations": {
+        "keyword_hits": ["necrotizing soft tissue infection", "necrotizing fasciitis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["surgery", "antibiotics"]
+      }
+    },
+    {
+      "case_id": "mesenteric_ischemia_afib_14",
+      "title": "Mesenteric Ischemia with Bland Abdomen",
+      "difficulty": 10,
+      "disease_family": "vascular_abdominal_critical",
+      "note": "Pain out of proportion in afib.",
+      "patient_text": "70 year old male with irregular irregular heart rhythm (Afib) complains of excruciating diffuse continuous belly pain. He is writhing in agony. Strangely, when the doctor pushes on his belly, it is completely soft without rebound. Lactate is 6.0.",
+      "expectations": {
+        "keyword_hits": ["mesenteric ischemia", "bowel ischemia", "intestinal ischemia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["cta", "surgery"]
+      }
+    },
+    {
+      "case_id": "co_poisoning_family_tr_15",
+      "title": "Ailecek Zehirlenme Karbonmonoksit",
+      "difficulty": 8,
+      "disease_family": "toxicologic_critical",
+      "note": "Multiple family members with winter flu-like symptoms.",
+      "patient_text": "Kisin soguk bir gecesinde acile 4 kisilik bir aile bas agrisi, bas donmesi, bulanti ve halsizlik sikayetiyle geldi. Hepsi sobali ayni odada uyuyormus. Yemekten (mide fesadi) supheleniyorlar ama pulse oksimetreleri %99, yuzleri pembe.",
+      "expectations": {
+        "keyword_hits": ["carbon monoxide", "co poisoning", "toxicologic"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["oxygen", "carboxyhemoglobin"]
+      }
+    },
+    {
+      "case_id": "salicylate_panic_trap_16",
+      "title": "Aspirin Toxicity Masked as Panic Attack",
+      "difficulty": 9,
+      "disease_family": "toxicologic_critical",
+      "note": "Tinnitus + hyperventilation = aspirin.",
+      "patient_text": "22 year old female brought in breathing very fast (RR 35), complaining her ears are ringing and she feels nauseous. She recently broke up with her boyfriend. ABG shows primary respiratory alkalosis AND anion gap metabolic acidosis.",
+      "expectations": {
+        "keyword_hits": ["salicylate", "aspirin toxicity"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["bicarbonate", "toxicology"]
+      }
+    },
+    {
+      "case_id": "acetaminophen_late_17",
+      "title": "Late Tylenol Toxicity Masked",
+      "difficulty": 8,
+      "disease_family": "toxicologic_critical",
+      "note": "RUQ pain + history of suicide attempt days ago.",
+      "patient_text": "19 year old girl complains of severe right upper quadrant pain and nausea. She admits that 2 days ago she took 'two handfuls of Tylenol' but felt fine so she didn't tell anyone. Now she is jaundiced.",
+      "expectations": {
+        "keyword_hits": ["acetaminophen", "paracetamol", "hepatotoxicity"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["n acetylcysteine", "hepatic panel", "toxicology"]
+      }
+    },
+    {
+      "case_id": "cauda_equina_retention_tr_18",
+      "title": "Bel Kaymasi ve Sessiz Idrar Retansiyonu",
+      "difficulty": 9,
+      "disease_family": "spinal_emergency",
+      "note": "Subtle cauda equina in Turkish.",
+      "patient_text": "45 yasinda insaat iscisi, agir kaldirdiktan sonra belinden bacaklarina vuran siddetli agri ile geldi. Sadece agri degil, makat cevresinde hissizlik var ve bugun hic idrara cikmadigini (amalar mesanesinin cok dolu oldugunu) fark etti.",
+      "expectations": {
+        "keyword_hits": ["cauda equina", "cord compression"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["spine mri", "neurosurgery"]
+      }
+    },
+    {
+      "case_id": "giant_cell_arteritis_tmj_19",
+      "title": "GCA Masquerading as TMJ Dental Pain",
+      "difficulty": 9,
+      "disease_family": "vasculitic_vision_emergency",
+      "note": "Jaw claudication.",
+      "patient_text": "76 year old woman complains of pain in her jaw specifically when she chews food. She also has a severe headache on the right side and brief blurry vision in the right eye. She went to the dentist yesterday and they said her teeth are fine.",
+      "expectations": {
+        "keyword_hits": ["giant cell arteritis", "temporal arteritis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["steroids", "ophthalmology", "esr"]
+      }
+    },
+    {
+      "case_id": "wernicke_ataxia_20",
+      "title": "Wernicke Encephalopathy Masked by Drunk Label",
+      "difficulty": 8,
+      "disease_family": "metabolic_neuro_overlap",
+      "note": "Ataxia, ophthalmoplegia, confusion.",
+      "patient_text": "55 year old chronic alcoholic is brought in confused, stumbling around like he's drunk. But his blood alcohol level is ZERO. He has nystagmus and cannot move his eyes laterally. Glucose is 60 and the nurse is preparing D50.",
+      "expectations": {
+        "keyword_hits": ["wernicke", "thiamine"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["thiamine", "before glucose"]
+      }
+    },
+    {
+      "case_id": "cardiac_tamponade_sob_21",
+      "title": "Cardiac Tamponade Masked as Asthma",
+      "difficulty": 9,
+      "disease_family": "cardiac_critical",
+      "note": "Beck's triad in an ESRD patient.",
+      "patient_text": "60 year old dialysis patient complains of severe shortness of breath. Lungs are totally clear. Blood pressure is 80/50, heart rate is 120 (muffled), and neck veins are massively distended. Pulsus paradoxus is present.",
+      "expectations": {
+        "keyword_hits": ["cardiac tamponade", "pericardial effusion", "obstructive shock"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["echocardiogram", "pericardiocentesis"]
+      }
+    },
+    {
+      "case_id": "meningococcemia_petechiae_22",
+      "title": "Meningococcemia with Tiny Rash",
+      "difficulty": 9,
+      "disease_family": "infectious_critical",
+      "note": "Petechial rash with fever and shock.",
+      "patient_text": "19 year old college student with sudden high fever, profound weakness, and severe muscle aches. BP is 85/45. Examining the skin reveals a few tiny non-blanching purple spots (petechiae) on the ankles. He looks extremely toxic.",
+      "expectations": {
+        "keyword_hits": ["meningococcemia", "meningitis", "septic shock"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["antibiotics", "blood cultures", "isolation"]
+      }
+    },
+    {
+      "case_id": "epidural_hematoma_minor_fall_23",
+      "title": "Spinal Epidural Hematoma on Thinners",
+      "difficulty": 10,
+      "disease_family": "spinal_emergency",
+      "note": "Minor trauma, blood thinners, rapid weakness.",
+      "patient_text": "72 year old on warfarin (blood thinners) slipped and fell on his buttocks. Now, two hours later, he has severe back pain and absolute inability to move both his legs. They are completely paralyzed. Reflexes absent.",
+      "expectations": {
+        "keyword_hits": ["spinal epidural hematoma", "cord compression"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["spine mri", "neurosurgery", "reversal"]
+      }
+    },
+    {
+      "case_id": "digoxin_toxicity_tr_24",
+      "title": "Mide Bulantisi ile Digoksin Zehirlenmesi",
+      "difficulty": 8,
+      "disease_family": "toxicologic_critical",
+      "note": "Turkish digoxin toxicity yellow vision.",
+      "patient_text": "78 yasinda kalp yetmezligi hastasi surekli midesi bulaniyor, ishal. Ayrica bugun her seyi sari-yesil renkte gordugunu soyluyor (Halo vizyonu). Nabzi 45'e kadar dusmus ve EKG'de PVC ler var.",
+      "expectations": {
+        "keyword_hits": ["digoxin toxicity", "arrhythmia"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["digoxin level", "ecg", "toxicology"]
+      }
+    },
+    {
+      "case_id": "cholangitis_back_pain_25",
+      "title": "Cholangitis Presenting as Just Back Pain",
+      "difficulty": 9,
+      "disease_family": "hepatobiliary_critical",
+      "note": "Charcot's triad but pain is entirely in the back.",
+      "patient_text": "80 year old male with sudden severe mid-back pain, shaking chills, fever 39.5, and his eyes look distinctly yellow (scleral icterus). BP 85/50. He denies right upper quadrant belly pain, only back pain.",
+      "expectations": {
+        "keyword_hits": ["acute cholangitis", "biliary sepsis"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "required_hits": ["antibiotics", "biliary decompression"]
+      }
+    },
+    {
+      "case_id": "inferior_mi_gerd_26",
+      "title": "Inferior MI Masked as Trivial GERD",
+      "difficulty": 8,
+      "disease_family": "cardiac_critical",
+      "note": "Epigastric pain only + sweating.",
+      "patient_text": "50 year old diabetic male complains of severe burning in his stomach (epigastric) after eating spicy food. He ate antacids but no relief. He is sweating profusely, looks pale, and is vomiting. Pulses are 55. No chest pain.",
+      "expectations": {
+        "keyword_hits": ["inferior myocardial infarction", "acute coronary syndrome"],
+        "status_hits": ["urgent_escalation", "revise"],
+        "blocked_hits": ["gi cocktail only"],
+        "required_hits": ["ecg", "cardiology"]
+      }
+    }
+  ]
+}
+

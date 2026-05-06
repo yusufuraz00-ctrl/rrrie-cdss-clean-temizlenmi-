@@ -1,0 +1,124 @@
+{
+  "cases": [
+    {
+      "case_id": "real1_energy_drink_stroke",
+      "title": "Energy Drink Induced RCVS/Stroke",
+      "difficulty": 9,
+      "disease_family": "neurovascular_tox",
+      "note": "Ref: BMJ Case Reports. Reversible Cerebral Vasoconstriction Syndrome.",
+      "patient_text": "Everything was going fine until this morning. I had my fourth energy drink before lunch, and suddenly my head started pounding like a hammer. My vision on the left side went blurry, and my left hand felt heavy, almost like it didn't belong to me. My wife said my face looked 'droopy'. The headache is intense, but the weakness is what's terrifying me.",
+      "expectations": {
+        "keyword_hits": ["stroke", "rcvs", "vasoconstriction", "neurological"],
+        "status_hits": ["urgent_escalation"]
+      }
+    },
+    {
+      "case_id": "real2_scurvy_bariatric",
+      "title": "Scurvy in Bariatric Patient",
+      "difficulty": 8,
+      "disease_family": "nutritional_deficiency",
+      "note": "Ref: BMJ Case Reports. Perifollicular hemorrhage and arthralgia.",
+      "patient_text": "My legs are covered in these ugly purple spots and bruises, and I haven't even bumped into anything. My knees and ankles hurt so much I can barely get to the kitchen. My gums have started bleeding every time I brush, and I feel like I'm completely drained of energy. I thought it was just the surgery effects, but it's getting worse.",
+      "expectations": {
+        "keyword_hits": ["scurvy", "vitamin c", "ascorbic acid"],
+        "status_hits": ["revise"]
+      }
+    },
+    {
+      "case_id": "real3_auto_brewery",
+      "title": "Auto-Brewery Syndrome",
+      "difficulty": 8,
+      "disease_family": "metabolic_fermentation",
+      "note": "Ref: Case Reports in Gastrointestinal Medicine.",
+      "patient_text": "This sounds crazy, but I feel like I'm drunk all the time without drinking a drop. Every time I eat a big pasta dinner, about an hour later my head starts spinning, my speech gets slurred, and I can't walk straight. My wife actually bought a breathalyzer because she didn't believe me, and it read 0.15% after I just ate some bread! I'm not drinking, I swear.",
+      "expectations": {
+        "keyword_hits": ["auto brewery", "fermentation", "saccharomyces", "ethanol"],
+        "status_hits": ["revise"]
+      }
+    },
+    {
+      "case_id": "real4_pkd_nejm",
+      "title": "Paroxysmal Kinesigenic Dyskinesia",
+      "difficulty": 9,
+      "disease_family": "movement_disorder",
+      "note": "Ref: NEJM Case 34-2025.",
+      "patient_text": "Every time I stand up quickly to leave a room, my right arm and leg just... twist. They cramp up and jerk for about 10 or 15 seconds. It doesn't hurt, but I can't control it. While it happens, I see these weird spots in my vision. It's happening 20 times a day now. My doctor said it's probably anxiety, but it only happens when I move suddenly.",
+      "expectations": {
+        "keyword_hits": ["paroxysmal kinesigenic dyskinesia", "dystonia", "movement", "pkd"],
+        "status_hits": ["revise"]
+      }
+    },
+    {
+      "case_id": "real5_nmda_encephalitis",
+      "title": "Anti-NMDA Receptor Encephalitis",
+      "difficulty": 10,
+      "disease_family": "neuroimmune",
+      "note": "Ref: 'Brain on Fire'. Ovarian teratoma association.",
+      "patient_text": "My daughter has completely changed in two weeks. She started acting paranoid, saying the neighbors were spying through the vents. Then she stopped sleeping and started talking to people who weren't there. We took her to Psych, but then today she had a grand mal seizure and her heart rate is jumping all over the place. This isn't just a mental breakdown, something is physically wrong with her brain.",
+      "expectations": {
+        "keyword_hits": ["nmda", "encephalitis", "autoimmune", "brain on fire"],
+        "status_hits": ["urgent_escalation"]
+      }
+    },
+    {
+      "case_id": "real6_tca_toxicity",
+      "title": "Tricyclic Antidepressant Toxicity",
+      "difficulty": 9,
+      "disease_family": "toxicology",
+      "note": "Classic wide QRS risk.",
+      "patient_text": "I took way too many of my pills about three hours ago. Now my heart is pounding so hard I can hear it in my ears. I'm so hot but my skin is bone dry. Everything is blurry, and I feel like I'm walking through a fog. My boyfriend said I was confused about where I was. I feel very agitated and my muscles are twitching.",
+      "expectations": {
+        "keyword_hits": ["tca", "antidepressant", "amitriptyline", "toxicity"],
+        "status_hits": ["urgent_escalation"]
+      }
+    },
+    {
+      "case_id": "real7_petticoat_cancer",
+      "title": "Squamous Cell Carcinoma (Friction Variant)",
+      "difficulty": 8,
+      "disease_family": "oncology_cutaneous",
+      "note": "Ref: Indian Journal of Dermatology. Chronic friction SCC.",
+      "patient_text": "I've had this sore on my right hip for almost three years. I thought it was just from the waist string of my saree rubbing against the skin. But now it's turned into a deep, crusty ulcer that won't heal. It bleeds easily if I touch it, and it has a very bad smell lately. It's getting bigger and it's starting to hurt deep in the bone.",
+      "expectations": {
+        "keyword_hits": ["squamous cell", "carcinoma", "saree", "ulcer"],
+        "status_hits": ["revise"]
+      }
+    },
+    {
+      "case_id": "real8_hht_nejm",
+      "title": "Hereditary Hemorrhagic Telangiectasia",
+      "difficulty": 9,
+      "disease_family": "vascular_genetic",
+      "note": "Ref: NEJM Case 36-2025. Osler-Weber-Rendu.",
+      "patient_text": "I'm so short of breath I can't even get through a conversation without gasping. I've been feeling extremely tired, and this morning I noticed my bowel movements were black like tar. I noticed these tiny red spots on my tongue and fingers that don't go away when I press them. I'm afraid I'm bleeding out from somewhere inside.",
+      "expectations": {
+        "keyword_hits": ["hht", "telangiectasia", "osler", "gi bleed"],
+        "status_hits": ["urgent_escalation"]
+      }
+    },
+    {
+      "case_id": "real9_neuroborreliosis",
+      "title": "Lyme Neuroborreliosis",
+      "difficulty": 9,
+      "disease_family": "infectious_neuro",
+      "note": "Ref: CDC/NEJM Lyme cases.",
+      "patient_text": "I woke up yesterday and the left side of my face was completely paralyzed. I can't close my left eye or smile properly. But what's weird is that my neck is incredibly stiff and I've had a pounding headache for days. I also have this faint, circular red mark on my thigh that looks like a target. I feel like I have the flu but much worse.",
+      "expectations": {
+        "keyword_hits": ["lyme", "borrelia", "bell's palsy", "meningitis"],
+        "status_hits": ["urgent_escalation"]
+      }
+    },
+    {
+      "case_id": "real10_pheochromocytoma",
+      "title": "Pheochromocytoma (Paroxysmal Hypertension)",
+      "difficulty": 10,
+      "disease_family": "endocrine_crisis",
+      "note": "Classic triad + severe paroxysms.",
+      "patient_text": "These 'panic attacks' are getting terrifying. Out of nowhere, my heart starts racing at 160 beats per minute, I get a splitting headache, and I start sweating so much I have to change my clothes. My face goes pale, and I feel a sense of impending doom. I took my blood pressure during an episode and it was 220/130. This doesn't feel like just 'stress' anymore.",
+      "expectations": {
+        "keyword_hits": ["pheochromocytoma", "adrenal", "catecholamine"],
+        "status_hits": ["urgent_escalation"]
+      }
+    }
+  ]
+}
